@@ -1,0 +1,18 @@
+# Thumbnails
+._*
+
+#emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+#Mac
+.DS_Store
+Thumbs.db
+.Spotlight-V100
+.Trashes

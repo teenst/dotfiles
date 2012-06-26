@@ -1,0 +1,37 @@
+[user]
+	name = teenst
+	email = teens.twenties@gmail.com
+[github]
+	user = teenst
+	token = ! "ruby -rpit -e \"print Pit.get('github')['token']\""
+[core]
+        editor = vim
+	excludesfile = /Users/teenst/.gitignore_global
+[color]
+        ui = true
+        diff = auto
+        status = auto
+        branch = auto
+        grep = auto
+[alias]
+        co = checkout
+        ci = commit -v
+        st = status
+        br = branch
+        hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+        type = cat-file -t
+        dump = cat-file -p
+        di = diff
+        puhs = push
+        psuh = push
+        pus = push
+        puh = push
+        pl = !git pull && git submodule update --init
+[push]
+        default = current
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
