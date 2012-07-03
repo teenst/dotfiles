@@ -15,8 +15,11 @@
 ;; inline-patch
 (setq default-input-method "MacOSX")
 
+;; "C-t"でウィンドウを切り替える
+(define-key global-map (kbd "C-t") 'other-window)
+
 ;;menu-bar非表示
-;(menu-bar-mode 0)
+(menu-bar-mode 0)
 ;;関数移動のためのimenu(この割当てはterminal emacsでは不可能)
 (global-set-key (kbd "C-.") 'imenu)
 
