@@ -32,7 +32,7 @@
         (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
             (normal-top-level-add-subdirs-to-load-path))))))
 ;; elispとconfディレクトリをサブディレクトリごとload-pathに通す
-;(add-to-load-path "elisp" "conf" "plugins")
+(add-to-load-path "elisp" "conf" "public_repos")
 
 ;; 入力されるキーシーケンスを入れ替える
 ;; ?\C-?はDELのキーシーケンス
