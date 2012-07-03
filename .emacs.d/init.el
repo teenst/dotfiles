@@ -153,7 +153,14 @@ nil 'japanese-jisx0208
     ;; describe-bindingsをAnythingに置き換える
     (descbinds-anything-install)))
 
-
+;; auto-complete
+;; M-x package-install RET auto-complete
+(when (require 'auto-complete-config nil t)
+  (add-to-list 'ac-dictionary-directories 
+    "~/.emacs.d/elisp/ac-dict")
+  (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
+  (ac-config-default)
+  (setq ac-use-menu-map t))
 ;; color-theme
 
 
