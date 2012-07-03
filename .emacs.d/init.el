@@ -22,6 +22,11 @@
 ;; elispとconfディレクトリをサブディレクトリごとload-pathに通す
 (add-to-load-path "elisp" "conf" "public_repos")
 
+;; package.el use melpa
+(when (require 'package nil t)
+  (add-to-list 'package-archives
+               '("melpa" . "http://melpa.milkbox.net/packages/"))
+  (package-initialize))
 
 ;; auto-install
 (when (require 'auto-install nil t)
