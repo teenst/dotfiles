@@ -11,6 +11,26 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+;;load-pathを追加する関数を定義
+(defun add-to-load-path (&rest paths)
+  (let (path)
+    (dolist (path paths paths)
+      (let ((default-directory (expand-file-name (concat user-emacs-directory path))))
+        (add-to-list 'load-path default-directory)
+        (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+            (normal-top-level-add-subdirs-to-load-path))))))
+;; elispとconfディレクトリをサブディレクトリごとload-pathに通す
+(add-to-load-path "elisp" "conf" "public_repos")
+
+
+;; auto-install
+(when (require 'auto-install nil t)
+  ;; def Install Directory
+  (setq auto-install-directory "~/.emacs.d/elisp/")
+  ;; Get elisp name from EmacsWiki
+  (auto-install-update-emacswiki-package-name t)
+  ;; use func "install-elisp"
+  (auto-install-compatibility-setup))
 
 ;; inline-patch
 (setq default-input-method "MacOSX")
@@ -33,16 +53,6 @@
 ;;Backupファイルを作らない
 (setq make-backup-files nil)
 
-;;load-pathを追加する関数を定義
-(defun add-to-load-path (&rest paths)
-  (let (path)
-    (dolist (path paths paths)
-      (let ((default-directory (expand-file-name (concat user-emacs-directory path))))
-        (add-to-list 'load-path default-directory)
-        (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
-            (normal-top-level-add-subdirs-to-load-path))))))
-;; elispとconfディレクトリをサブディレクトリごとload-pathに通す
-(add-to-load-path "elisp" "conf" "public_repos")
 
 ;; 入力されるキーシーケンスを入れ替える
 ;; ?\C-?はDELのキーシーケンス
