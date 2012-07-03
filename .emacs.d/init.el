@@ -26,7 +26,14 @@
 (when (require 'package nil t)
   (add-to-list 'package-archives
                '("melpa" . "http://melpa.milkbox.net/packages/"))
+  (add-to-list 'package-archives
+               '("ELPA" . "http://tromey.com/elpa/"))
   (package-initialize))
+
+
+;; prelude
+(add-to-load-path "prelude")
+(load "init")
 
 ;; auto-install
 (when (require 'auto-install nil t)
@@ -161,7 +168,6 @@ nil 'japanese-jisx0208
   (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
   (ac-config-default)
   (setq ac-use-menu-map t))
-;; color-theme
 
 
 ;;undo-tree
