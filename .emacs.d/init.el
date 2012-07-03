@@ -18,8 +18,15 @@
 ;; "C-t"でウィンドウを切り替える
 (define-key global-map (kbd "C-t") 'other-window)
 
+;; カラム番号表示
+(column-number-mode t)
+
+;; タイトルバーにフルパスを表示
+(setq frame-title-format "%f")
+
 ;;menu-bar非表示
 (menu-bar-mode 0)
+
 ;;関数移動のためのimenu(この割当てはterminal emacsでは不可能)
 (global-set-key (kbd "C-.") 'imenu)
 
