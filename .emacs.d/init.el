@@ -31,10 +31,6 @@
   (package-initialize))
 
 
-;; prelude
-(add-to-load-path "prelude")
-(load "init")
-
 ;; auto-install
 (when (require 'auto-install nil t)
   ;; def Install Directory
@@ -169,6 +165,8 @@ nil 'japanese-jisx0208
   (ac-config-default)
   (setq ac-use-menu-map t))
 
+;; color-theme
+(load-theme 'solarized-dark t)
 
 ;;undo-tree
 ;(require 'undo-tree)
