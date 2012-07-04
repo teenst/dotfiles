@@ -160,7 +160,7 @@ nil 'japanese-jisx0208
 ;; M-x package-install RET auto-complete
 (when (require 'auto-complete-config nil t)
   (add-to-list 'ac-dictionary-directories 
-    "~/.emacs.d/elisp/ac-dict")
+    "~/.emacs.d/elpa/auto-complete-20120327/dict/")
   (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
   (ac-config-default)
   (setq ac-use-menu-map t))
@@ -172,6 +172,47 @@ nil 'japanese-jisx0208
 ;(require 'undo-tree)
 ;(global-undo-tree-mode)
 
+;; Ruby-mode
+(autoload 'ruby-mode "ruby-mode" "Major mode for ruby files" t)
+(add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
+(add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
+
+;; ruby-block
+(require 'ruby-block)
+(setq ruby-block-highlight-toggle t)
+(defun ruby-mode-hook-ruby-block()
+  (ruby-block-mode t))
+(add-hook 'ruby-mode-hook 'ruby-mode-hook-ruby-block)
+
+;; ruby-elecrtric
+(defun ruby-mode-hook-ruby-elecrtric ()
+  (ruby-electric-mode t))
+(add-hook 'ruby-mode-hook 'ruby-mode-hook-ruby-elecrtric)
+
+
+;; Ruby flymake
+(require 'flymake)
+
+(defun flymake-ruby-init ()
+  (let* ((temp-file   (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+         (local-file  (file-relative-name
+                       temp-file
+                       (file-name-directory buffer-file-name))))
+    (list "ruby" (list "-c" local-file))))
+(push '(".+\\.rb$" flymake-ruby-init) flymake-allowed-file-name-masks)
+(push '("Rakefile$" flymake-ruby-init) flymake-allowed-file-name-masks)
+(push '("^\\(.*\\):\\([0-9]+\\): \\(.*\\)$" 1 2 nil 3) flymake-err-line-patterns)
+
+(defun ruby-mode-hook-flymake-init ()
+ "Don't want flymake mode for ruby regions in rhtml files and also on read only files"
+  (if (and (not (null buffer-file-name))
+           (file-writable-p buffer-file-name))
+      (flymake-mode-on)))
+(add-hook 'ruby-mode-hook 'ruby-mode-hook-flymake-init)
+
+
 ;; Egg
 (when (executable-find "git")
   (require 'egg nil t))
+
