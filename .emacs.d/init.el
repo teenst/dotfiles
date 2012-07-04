@@ -171,3 +171,7 @@ nil 'japanese-jisx0208
 ;;undo-tree
 ;(require 'undo-tree)
 ;(global-undo-tree-mode)
+
+;; Egg
+(when (executable-find "git")
+  (require 'egg nil t))
