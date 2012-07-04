@@ -211,6 +211,7 @@ nil 'japanese-jisx0208
       (flymake-mode-on)))
 (add-hook 'ruby-mode-hook 'ruby-mode-hook-flymake-init)
 
+(require 'ruby-tools)
 
 ;; Egg
 (when (executable-find "git")
