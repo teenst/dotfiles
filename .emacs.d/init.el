@@ -250,7 +250,7 @@ nil 'japanese-jisx0208
 (when (require 'flymake-python nil t)
   ;;use flake8
   (setq flymake-python-syntax-checker "flake8"))
-
+(load-library "flymake-cursor")
 
 ;; Egg
 (when (executable-find "git")
