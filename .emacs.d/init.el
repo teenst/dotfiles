@@ -227,6 +227,31 @@ nil 'japanese-jisx0208
              ;; C-x .で補完出来るようキーを設定
              (define-key ruby-mode-map (kbd "C-x .") 'ac-complete-rsense)))
 
+;; python
+(add-hook 'python-mode-hook
+          (lambda ()
+            (define-key python-mode-map "\"" 'electric-pair)
+            (define-key python-mode-map "\'" 'electric-pair)
+            (define-key python-mode-map "(" 'electric-pair)
+            (define-key python-mode-map "[" 'electric-pair)
+            (define-key python-mode-map "{" 'electric-pair)))
+(defun electric-pair ()
+  "Insert character pair without sournding spaces"
+  (interactive)
+  (let (parens-require-spaces)
+    (insert-pair)))
+(add-hook 'python-mode-hook '(lambda () 
+     (define-key python-mode-map "\C-m" 'newline-and-indent)))
+;;; ac-python
+(require 'ac-python)
+
+;;flymake-python
+(install-elisp "https://raw.github.com/seanfisk/emacs/sean/src/lib/flymake-python.el")
+(when (require 'flymake-python nil t)
+  ;;use flake8
+  (setq flymake-python-syntax-checker "flake8"))
+
+
 ;; Egg
 (when (executable-find "git")
   (require 'egg nil t))
