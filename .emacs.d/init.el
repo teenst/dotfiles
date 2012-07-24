@@ -226,6 +226,24 @@ nil 'japanese-jisx0208
              (add-to-list 'ac-sources 'ac-source-rsense-constant)
              ;; C-x .で補完出来るようキーを設定
              (define-key ruby-mode-map (kbd "C-x .") 'ac-complete-rsense)))
+;; Ruby indent
+;; http://willnet.in/13
+(setq ruby-deep-indent-paren-style nil)
+(defadvice ruby-indent-line (after unindent-closing-paren activate)
+  (let ((column (current-column))
+        indent offset)
+    (save-excursion
+      (back-to-indentation)
+      (let ((state (syntax-ppss)))
+        (setq offset (- column (current-column)))
+        (when (and (eq (char-after) ?\))
+                   (not (zerop (car state))))
+          (goto-char (cadr state))
+          (setq indent (current-indentation)))))
+    (when indent
+      (indent-line-to indent)
+      (when (> offset 0) (forward-char offset)))))
+
 
 ;; python
 (add-hook 'python-mode-hook
