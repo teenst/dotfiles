@@ -264,7 +264,7 @@ nil 'japanese-jisx0208
 (require 'ac-python)
 
 ;;flymake-python
-(install-elisp "https://raw.github.com/seanfisk/emacs/sean/src/lib/flymake-python.el")
+;;(install-elisp "https://raw.github.com/seanfisk/emacs/sean/src/lib/flymake-python.el")
 (when (require 'flymake-python nil t)
   ;;use flake8
   (setq flymake-python-syntax-checker "flake8"))
