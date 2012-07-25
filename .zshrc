@@ -25,7 +25,7 @@ bindkey -e # emacs keybind
 export LANG=ja_JP.UTF-8
 export EDITOR="vi"
 
-export PATH=/usr/local/bin:$PATH
+export PATH=$HOME/local/bin:/usr/local/bin:$PATH
 
 #ls color
 export LSCOLORS=gxfxcxdxbxegedabagacad
