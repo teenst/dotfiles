@@ -40,8 +40,6 @@
   ;; use func "install-elisp"
   (auto-install-compatibility-setup))
 
-;; inline-patch
-(setq default-input-method "MacOSX")
 
 ;; "C-t"でウィンドウを切り替える
 (define-key global-map (kbd "C-t") 'other-window)
@@ -73,12 +71,7 @@
 ;; PATHを追加
 (setenv "PATH" (mapconcat 'identity exec-path ":"))
 
-;; Mac の文字コードの設定
-(set-language-environment "Japanese")
-(require 'ucs-normalize)
-(prefer-coding-system 'utf-8)
-(setq file-name-coding-system 'utf-8)
-(setq locale-coding-system 'utf-8)
+
 
 ;; paren-mode 対応する括弧を強調して表示
 ;(setq show-paren-delay 0) ; 表示秒数
@@ -89,18 +82,30 @@
 ;(setq c-indent-level 4)
 (setq-default indent-tabs-mode nil)
 
-;emacs-appフォント
-(set-face-attribute 'default nil
-                   :family "Menlo"
-                   :height 150)
-(set-fontset-font
-nil 'japanese-jisx0208
-(font-spec :family "Hiragino_Maru_Gothic_ProN"))
+;; Mac用の設定
+(when (eq system-type 'derwin)
+  ;; inline-patch
+  (setq default-input-method "MacOSX")
+  
+  ;; Mac 文字コードの設定
+  (set-language-environment "Japanese")
+  (require 'ucs-normalize)
+  (prefer-coding-system 'utf-8)
+  (setq file-name-coding-system 'utf-8)
+  (setq locale-coding-system 'utf-8)
 
-(setq face-font-rescale-alist
-     '((".*Menlo.*" . 1.0)
-       (".*Hiragino_Maru_Gothic_ProN.*" . 1.2)
-       ("-cdac$" . 1.3)))
+  ;;emacs-appフォント
+  (set-face-attribute 'default nil
+                      :family "Menlo"
+                      :height 150)
+  (set-fontset-font
+   nil 'japanese-jisx0208
+   (font-spec :family "Hiragino_Maru_Gothic_ProN"))
+  
+  (setq face-font-rescale-alist
+        '((".*Menlo.*" . 1.0)
+          (".*Hiragino_Maru_Gothic_ProN.*" . 1.2)
+          ("-cdac$" . 1.3))))
 
 ;; タブ文字と全角スペースの可視化
 (setq whitespace-style
