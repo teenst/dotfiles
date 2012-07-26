@@ -21,14 +21,14 @@
             (normal-top-level-add-subdirs-to-load-path))))))
 ;; elispとconfディレクトリをサブディレクトリごとload-pathに通す
 (add-to-load-path "elisp" "conf" "public_repos")
-
-;; package.el use melpa
-(when (require 'package nil t)
-  (add-to-list 'package-archives
-               '("melpa" . "http://melpa.milkbox.net/packages/"))
-  (add-to-list 'package-archives
-               '("ELPA" . "http://tromey.com/elpa/"))
-  (package-initialize))
+(when (< emacs-major-version 23)
+  ;; package.el use melpa
+  (when (require 'package nil t)
+    (add-to-list 'package-archives
+                 '("melpa" . "http://melpa.milkbox.net/packages/"))
+    (add-to-list 'package-archives
+                 '("ELPA" . "http://tromey.com/elpa/"))
+    (package-initialize)))
 
 
 ;; auto-install
@@ -73,6 +73,7 @@
 ;; PATHを追加
 (setenv "PATH" (mapconcat 'identity exec-path ":"))
 
+
 ;; Mac の文字コードの設定
 (set-language-environment "Japanese")
 (require 'ucs-normalize)
@@ -90,17 +91,18 @@
 (setq-default indent-tabs-mode nil)
 
 ;emacs-appフォント
-(set-face-attribute 'default nil
-                   :family "Menlo"
-                   :height 150)
-(set-fontset-font
-nil 'japanese-jisx0208
-(font-spec :family "Hiragino_Maru_Gothic_ProN"))
-
-(setq face-font-rescale-alist
-     '((".*Menlo.*" . 1.0)
-       (".*Hiragino_Maru_Gothic_ProN.*" . 1.2)
-       ("-cdac$" . 1.3)))
+(when (eq system-type 'darwin)
+  (set-face-attribute 'default nil
+                      :family "Menlo"
+                      :height 150)
+  (set-fontset-font
+   nil 'japanese-jisx0208
+   (font-spec :family "Hiragino_Maru_Gothic_ProN"))
+  
+  (setq face-font-rescale-alist
+        '((".*Menlo.*" . 1.0)
+          (".*Hiragino_Maru_Gothic_ProN.*" . 1.2)
+          ("-cdac$" . 1.3))))
 
 ;; タブ文字と全角スペースの可視化
 (setq whitespace-style
@@ -246,20 +248,19 @@ nil 'japanese-jisx0208
 
 
 ;; python
-(add-hook 'python-mode-hook
-          (lambda ()
-            (define-key python-mode-map "\"" 'electric-pair)
-            (define-key python-mode-map "\'" 'electric-pair)
-            (define-key python-mode-map "(" 'electric-pair)
-            (define-key python-mode-map "[" 'electric-pair)
-            (define-key python-mode-map "{" 'electric-pair)))
 (defun electric-pair ()
   "Insert character pair without sournding spaces"
   (interactive)
   (let (parens-require-spaces)
     (insert-pair)))
-(add-hook 'python-mode-hook '(lambda () 
-     (define-key python-mode-map "\C-m" 'newline-and-indent)))
+(add-hook 'python-mode-hook '(lambda ()
+                               (define-key python-mode-map "\"" 'electric-pair)
+                               (define-key python-mode-map "\'" 'electric-pair)
+                               (define-key python-mode-map "(" 'electric-pair)
+                               (define-key python-mode-map "[" 'electric-pair)
+                               (define-key python-mode-map "{" 'electric-pair)
+                               (define-key python-mode-map "\C-m" 'newline-and-indent)))
+                               
 ;;; ac-python
 (require 'ac-python)
 
