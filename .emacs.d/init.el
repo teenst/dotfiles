@@ -83,7 +83,7 @@
 (setq-default indent-tabs-mode nil)
 
 ;; Mac用の設定
-(when (eq system-type 'derwin)
+(when (eq system-type 'darwin)
   ;; inline-patch
   (setq default-input-method "MacOSX")
   
