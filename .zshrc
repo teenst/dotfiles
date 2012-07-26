@@ -20,8 +20,6 @@ setopt list_packed # compacked complete list display
 bindkey -e # emacs keybind
 
 
-
-
 export LANG=ja_JP.UTF-8
 export EDITOR="vi"
 
@@ -42,35 +40,37 @@ alias la="ls -a"
 eval "$(rbenv init -)"
 source ~/.rbenv/completions/rbenv.zsh
 
-# #python
-# export PATH=/usr/local/share/python:$PATH
 
-#emacs
-#alias emacs=/Applications/Emacs.app/Contents/MacOS/Emacs #Pure emacs!!
-alias emacs=/usr/local/Cellar/emacs/24.1/Emacs.app/Contents/MacOS/Emacs -nw
+case $OSTYPE in
+    darwin*)
+        #emacs
+        alias emacs=/usr/local/Cellar/emacs/24.1/Emacs.app/Contents/MacOS/Emacs -nw
+        #Perl
+        #Perlbrew http://www.perl-entrance.org/p/modernperl20123.html
+        source ~/perl5/perlbrew/etc/bashrc
 
-#Perl
-##Perlbrew http://www.perl-entrance.org/p/modernperl20123.html
-source ~/perl5/perlbrew/etc/bashrc
+        #TeX
+        #Ghostscript:http://www.muskmelon.jp/?page_id=75
+        export PATH=/Applications/Ghostscript.app:/Applications/Ghostscript.app/bin:/usr/texbin:$PATH
+        export MANPATH=/Library/TeX/Distributions/.DefaultTeX/Contents/Man:$MANPATH
 
-#TeX
-#Ghostscript:http://www.muskmelon.jp/?page_id=75
-export PATH=/Applications/Ghostscript.app:/Applications/Ghostscript.app/bin:/usr/texbin:$PATH
-export MANPATH=/Library/TeX/Distributions/.DefaultTeX/Contents/Man:$MANPATH
+esac
+
+
 
 # zsh-completionsを利用する Github => zsh-completions
 # https://github.com/zsh-users/zsh-completions
 fpath=(~/github/zsh-completions /usr/local/share/zsh/functions $fpath)
 
-#jubatus
-PATH=$PATH:$HOME/local/bin
-CPLUS_INCLUDE_PATH=$HOME/local/include
-export CPLUS_INCLUDE_PATH
-export PATH
-export set LDFLAGS=-L$HOME/local/lib
-LD_LIBRARY_PATH=$HOME/local/lib
-export LD_LIBRARY_PATH
-PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig
-export PKG_CONFIG_PATH
+# #jubatus
+# PATH=$PATH:$HOME/local/bin
+# CPLUS_INCLUDE_PATH=$HOME/local/include
+# export CPLUS_INCLUDE_PATH
+# export PATH
+# export set LDFLAGS=-L$HOME/local/lib
+# LD_LIBRARY_PATH=$HOME/local/lib
+# export LD_LIBRARY_PATH
+# PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig
+# export PKG_CONFIG_PATH
 
 
