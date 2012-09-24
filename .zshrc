@@ -45,7 +45,7 @@ source ~/.rbenv/completions/rbenv.zsh
 case $OSTYPE in
     darwin*)
         #emacs
-        alias emacs=/usr/local/Cellar/emacs/24.1/Emacs.app/Contents/MacOS/Emacs -nw
+        alias emacs=/usr/local/Cellar/emacs/24.2/Emacs.app/Contents/MacOS/Emacs -nw
         #Perl
         #Perlbrew http://www.perl-entrance.org/p/modernperl20123.html
         source ~/perl5/perlbrew/etc/bashrc
