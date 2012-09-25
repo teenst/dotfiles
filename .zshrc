@@ -74,4 +74,12 @@ fpath=(~/github/zsh-completions /usr/local/share/zsh/functions $fpath)
 # PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig
 # export PKG_CONFIG_PATH
 
+# git u command
+function u()
+{
+    cd ./$(git rev-parse --show-cdup)
+    if [ $# = 1 ]; then
+        cd $1
+    fi
+}
 
