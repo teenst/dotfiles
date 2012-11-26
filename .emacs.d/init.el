@@ -220,7 +220,7 @@
 
 ;;Rsense
 ;;read http://cx4a.org/software/rsense/manual.ja.html
-(setq rsense-home "/Users/teenst/.dotfiles/.emacs.d/opt/rsense-0.3")
+(setq rsense-home "/Users/teenst/.emacs.d/opt/rsense-0.3")
 (add-to-list 'load-path (concat rsense-home "/etc"))
 (require 'rsense)
 
@@ -231,6 +231,10 @@
              (add-to-list 'ac-sources 'ac-source-rsense-constant)
              ;; C-x .で補完出来るようキーを設定
              (define-key ruby-mode-map (kbd "C-x .") 'ac-complete-rsense)))
+;;Rsense hook Reference
+(setq rsense-rurema-home (concat rsense-home "/doc/ruby-refm-1.9.3-dynamic-snapshot"))
+(setq rsense-rurema-refe "refe-1_9_3")
+
 ;; Ruby indent
 ;; http://willnet.in/13
 (setq ruby-deep-indent-paren-style nil)
