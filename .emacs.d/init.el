@@ -284,3 +284,8 @@
 (setq auto-mode-alist
       (cons (cons "\\.tex$" 'yatex-mode) auto-mode-alist))
 (autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
+(setq tex-command "~/Library/TeXShop/bin/platex2pdf-utf8"
+     dvi2-command "open -a TeXShop")
+(setq YaTeX-kanji-code 4)
+(setq bibtex-command "pbibtex")
+(add-hook 'yatex-mode-hook 'turn-on-reftex)
