@@ -20,7 +20,7 @@
         (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
             (normal-top-level-add-subdirs-to-load-path))))))
 ;; elispとconfディレクトリをサブディレクトリごとload-pathに通す
-(add-to-load-path "elisp" "conf" "public_repos")
+(add-to-load-path "elisp" "conf" "public_repos" "site-lisp")
 
 ;; package.el use melpa
 (when (require 'package nil t)
@@ -279,3 +279,8 @@
 
 ;; Magit
 (require 'magit)
+
+;; YaTeX mode
+(setq auto-mode-alist
+      (cons (cons "\\.tex$" 'yatex-mode) auto-mode-alist))
+(autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
