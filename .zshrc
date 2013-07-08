@@ -100,3 +100,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/local/lib
 
 # mosh
 compdef mosh=ssh
+
+
+#git
+export GIT_PAGER="lv -c"
