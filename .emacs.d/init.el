@@ -20,7 +20,7 @@
         (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
             (normal-top-level-add-subdirs-to-load-path))))))
 ;; elispとconfディレクトリをサブディレクトリごとload-pathに通す
-(add-to-load-path "elisp" "conf" "public_repos")
+(add-to-load-path "elisp" "conf" "public_repos" "site-lisp")
 
 ;; package.el use melpa
 (setq url-http-attempt-keepalives nil)
@@ -223,7 +223,7 @@
 
 ;;Rsense
 ;;read http://cx4a.org/software/rsense/manual.ja.html
-(setq rsense-home "/Users/teenst/.dotfiles/.emacs.d/opt/rsense-0.3")
+(setq rsense-home "/Users/teenst/.emacs.d/opt/rsense-0.3")
 (add-to-list 'load-path (concat rsense-home "/etc"))
 ;;(require 'rsense)
 
@@ -234,6 +234,10 @@
              (add-to-list 'ac-sources 'ac-source-rsense-constant)
              ;; C-x .で補完出来るようキーを設定
              (define-key ruby-mode-map (kbd "C-x .") 'ac-complete-rsense)))
+;;Rsense hook Reference
+(setq rsense-rurema-home (concat rsense-home "/doc/ruby-refm-1.9.3-dynamic-snapshot"))
+(setq rsense-rurema-refe "refe-1_9_3")
+
 ;; Ruby indent
 ;; http://willnet.in/13
 (setq ruby-deep-indent-paren-style nil)
@@ -277,4 +281,15 @@
 (load-library "flymake-cursor")
 
 ;; Magit
-;(require 'magit)
+(require 'magit)
+
+;; YaTeX mode
+(setq auto-mode-alist
+      (cons (cons "\\.tex$" 'yatex-mode) auto-mode-alist))
+(autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
+(setq tex-command "~/Library/TeXShop/bin/platex2pdf-utf8"
+     dvi2-command "open -a TeXShop")
+(setq YaTeX-kanji-code 4)
+(setq bibtex-command "pbibtex")
+(add-hook 'yatex-mode-hook 'turn-on-reftex)
+>>>>>>> cf08ce3567a96422440e7c8374ff6ad51afbc414

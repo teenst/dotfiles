@@ -11,8 +11,14 @@ auto-save-list
 tramp
 .\#*
 
+.emacs.d/opt/
+.emacs.d/elpa/
+.emacs.d/site-lisp/
+
 #Mac
 .DS_Store
 Thumbs.db
 .Spotlight-V100
 .Trashes
+/.emacs.d/abbrev_defs
+/.emacs.d/ac-comphist.dat

@@ -18,10 +18,17 @@ setopt auto_pushd # use cd hyphen
 setopt correct # complement command
 setopt list_packed # compacked complete list display
 bindkey -e # emacs keybind
+bindkey "^?"    backward-delete-char
+bindkey "^H"    backward-delete-char
+bindkey "^[[3~" delete-char
+bindkey "^[[1~" beginning-of-line
+bindkey "^[[4~" end-of-line
+setopt IGNOREEOF
+setopt share_history
 
 
 export LANG=ja_JP.UTF-8
-export EDITOR="vi"
+export EDITOR="vim"
 
 export PATH=$HOME/bin:$HOME/local/bin:/usr/local/bin:$PATH
 
@@ -45,7 +52,7 @@ source ~/.rbenv/completions/rbenv.zsh
 case $OSTYPE in
     darwin*)
         #emacs
-        alias emacs=/usr/local/Cellar/emacs/24.1/Emacs.app/Contents/MacOS/Emacs -nw
+        alias emacs=/usr/local/Cellar/emacs/24.2/Emacs.app/Contents/MacOS/Emacs -nw
         #Perl
         #Perlbrew http://www.perl-entrance.org/p/modernperl20123.html
         source ~/perl5/perlbrew/etc/bashrc
@@ -74,6 +81,14 @@ fpath=(~/github/zsh-completions /usr/local/share/zsh/functions $fpath)
 # PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig
 # export PKG_CONFIG_PATH
 
+# git u command
+function u()
+{
+    cd ./$(git rev-parse --show-cdup)
+    if [ $# = 1 ]; then
+        cd $1
+    fi
+}
 
 #gxp
 export PS1="`gxpc prompt 2> /dev/null`\$ "
