@@ -23,7 +23,7 @@ bindkey -e # emacs keybind
 export LANG=ja_JP.UTF-8
 export EDITOR="vi"
 
-export PATH=$HOME/local/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$HOME/local/bin:/usr/local/bin:$PATH
 
 #ls color
 export LSCOLORS=gxfxcxdxbxegedabagacad
@@ -75,3 +75,13 @@ fpath=(~/github/zsh-completions /usr/local/share/zsh/functions $fpath)
 # export PKG_CONFIG_PATH
 
 
+#gxp
+export PS1="`gxpc prompt 2> /dev/null`\$ "
+
+#LD(Linux)
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/local/lib
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$HOME/local/lib/pkgconfig
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/local/lib
+
+# mosh
+compdef mosh=ssh
