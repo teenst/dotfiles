@@ -96,7 +96,8 @@ export PS1="`gxpc prompt 2> /dev/null`\$ "
 #LD(Linux)
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/local/lib
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$HOME/local/lib/pkgconfig
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/local/lib
+export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$HOME/local/include
+export C_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$HOME/local/include
 
 # mosh
 compdef mosh=ssh
