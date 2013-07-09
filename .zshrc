@@ -30,7 +30,7 @@ setopt share_history
 export LANG=ja_JP.UTF-8
 export EDITOR="vim"
 
-export PATH=$HOME/local/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$HOME/local/bin:/usr/local/bin:$PATH
 
 #ls color
 export LSCOLORS=gxfxcxdxbxegedabagacad
@@ -70,17 +70,6 @@ esac
 # https://github.com/zsh-users/zsh-completions
 fpath=(~/github/zsh-completions /usr/local/share/zsh/functions $fpath)
 
-# #jubatus
-# PATH=$PATH:$HOME/local/bin
-# CPLUS_INCLUDE_PATH=$HOME/local/include
-# export CPLUS_INCLUDE_PATH
-# export PATH
-# export set LDFLAGS=-L$HOME/local/lib
-# LD_LIBRARY_PATH=$HOME/local/lib
-# export LD_LIBRARY_PATH
-# PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig
-# export PKG_CONFIG_PATH
-
 # git u command
 function u()
 {
@@ -90,3 +79,21 @@ function u()
     fi
 }
 
+#gxp
+export PS1="`gxpc prompt 2> /dev/null`\$ "
+
+#LD(Linux)
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/local/lib
+export LIBRARY_PATH=$LIBRARY_PATH:$HOME/local/lib
+export LDFLAGS=$LDFLAGS:$HOME/local/lib
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$HOME/local/lib/pkgconfig
+export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$HOME/local/include
+export C_INCLUDE_PATH=$C_INCLUDE_PATH:$HOME/local/include
+
+
+# mosh
+compdef mosh=ssh
+
+
+#git
+export GIT_PAGER="lv -c"
