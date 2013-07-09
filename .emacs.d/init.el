@@ -289,3 +289,9 @@
 (setq YaTeX-kanji-code 4)
 (setq bibtex-command "pbibtex")
 (add-hook 'yatex-mode-hook 'turn-on-reftex)
+(add-hook 'yatex-mode-hook'(lambda ()(setq auto-fill-function nil)))
+
+
+;;markdown-mode
+(setq auto-mode-alist 
+      (cons '("\\.md" . markdown-mode) auto-mode-alist))
