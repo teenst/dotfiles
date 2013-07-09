@@ -32,7 +32,7 @@
                '("ELPA" . "http://tromey.com/elpa/"))
   (package-initialize))
 ; melpa.el
-(require 'melpa)
+;(require 'melpa)
 
 ;; auto-install
 (when (require 'auto-install nil t)
@@ -186,11 +186,11 @@
 (add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
 
 ;; ;; ruby-block
-;; (require 'ruby-block)
-;; (setq ruby-block-highlight-toggle t)
-;; (defun ruby-mode-hook-ruby-block()
-;;   (ruby-block-mode t))
-;; (add-hook 'ruby-mode-hook 'ruby-mode-hook-ruby-block)
+(require 'ruby-block)
+(setq ruby-block-highlight-toggle t)
+(defun ruby-mode-hook-ruby-block()
+  (ruby-block-mode t))
+(add-hook 'ruby-mode-hook 'ruby-mode-hook-ruby-block)
 
 ;; ruby-elecrtric
 (defun ruby-mode-hook-ruby-elecrtric ()
@@ -219,13 +219,13 @@
       (flymake-mode-on)))
 (add-hook 'ruby-mode-hook 'ruby-mode-hook-flymake-init)
 
-;;(require 'ruby-tools)
+(require 'ruby-tools)
 
 ;;Rsense
 ;;read http://cx4a.org/software/rsense/manual.ja.html
 (setq rsense-home "/Users/teenst/.emacs.d/opt/rsense-0.3")
 (add-to-list 'load-path (concat rsense-home "/etc"))
-;;(require 'rsense)
+(require 'rsense)
 
 (add-hook 'ruby-mode-hook
           '(lambda ()
