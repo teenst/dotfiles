@@ -97,3 +97,8 @@ compdef mosh=ssh
 
 #git
 export GIT_PAGER="lv -c"
+
+# scala(svm)
+## http://yuroyoro.hatenablog.com/entry/20110121/1295610398
+export SCALA_HOME=~/.svm/current/rt
+export PATH=$SCALA_HOME/bin:$PATH
