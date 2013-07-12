@@ -31,6 +31,32 @@ export LANG=ja_JP.UTF-8
 export EDITOR="vim"
 
 export PATH=$HOME/bin:$HOME/local/bin:/usr/local/bin:$PATH
+export CPLUS_INCLUDE_PATH=$HOME/local/include:$CPLUS_INCLUDE_PATH
+export C_INCLUDE_PATH=$HOME/local/include:$C_INCLUDE_PATH
+export LIBRARY_PATH=$HOME/local/lib:$LIBRARY_PATH
+export LDFLAGS="-L$HOME/local/lib"
+export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig:$PKG_CONFIG_PATH
+
+case $OSTYPE in
+    linux*)
+        ;;
+        
+    darwin*)
+        export DYLD_LIBRARY_PATH=$HOME/local/lib:$DYLD_LIBRARY_PATH
+       #emacs
+        alias emacs=/usr/local/Cellar/emacs/24.2/Emacs.app/Contents/MacOS/Emacs -nw
+        #Perl
+        #Perlbrew http://www.perl-entrance.org/p/modernperl20123.html
+        source ~/perl5/perlbrew/etc/bashrc
+        
+        #TeX
+        #Ghostscript:http://www.muskmelon.jp/?page_id=75
+        export PATH=/Applications/Ghostscript.app:/Applications/Ghostscript.app/bin:/usr/texbin:$PATH
+        export MANPATH=/Library/TeX/Distributions/.DefaultTeX/Contents/Man:$MANPATH
+
+esac
+
 
 #ls color
 export LSCOLORS=gxfxcxdxbxegedabagacad
@@ -49,20 +75,7 @@ eval "$(rbenv init -)"
 source ~/.rbenv/completions/rbenv.zsh
 
 
-case $OSTYPE in
-    darwin*)
-        #emacs
-        alias emacs=/usr/local/Cellar/emacs/24.2/Emacs.app/Contents/MacOS/Emacs -nw
-        #Perl
-        #Perlbrew http://www.perl-entrance.org/p/modernperl20123.html
-        source ~/perl5/perlbrew/etc/bashrc
 
-        #TeX
-        #Ghostscript:http://www.muskmelon.jp/?page_id=75
-        export PATH=/Applications/Ghostscript.app:/Applications/Ghostscript.app/bin:/usr/texbin:$PATH
-        export MANPATH=/Library/TeX/Distributions/.DefaultTeX/Contents/Man:$MANPATH
-
-esac
 
 
 
@@ -83,12 +96,8 @@ function u()
 export PS1="`gxpc prompt 2> /dev/null`\$ "
 
 #LD(Linux)
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/local/lib
-export LIBRARY_PATH=$LIBRARY_PATH:$HOME/local/lib
-export LDFLAGS=$LDFLAGS:$HOME/local/lib
-export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$HOME/local/lib/pkgconfig
-export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$HOME/local/include
-export C_INCLUDE_PATH=$C_INCLUDE_PATH:$HOME/local/include
+
+
 
 
 # mosh
