@@ -95,9 +95,8 @@ function u()
 #gxp
 export PS1="`gxpc prompt 2> /dev/null`\$ "
 
-#LD(Linux)
-
-
+#Python
+export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
 
 
 # mosh
