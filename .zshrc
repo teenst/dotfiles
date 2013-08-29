@@ -30,13 +30,13 @@ setopt share_history
 export LANG=ja_JP.UTF-8
 export EDITOR="vim"
 
-export PATH=$HOME/bin:$HOME/local/bin:/usr/local/bin:$PATH
+#export PATH=$HOME/bin:$HOME/local/bin:/usr/local/bin:$PATH
 export CPLUS_INCLUDE_PATH=$HOME/local/include:$CPLUS_INCLUDE_PATH
 export C_INCLUDE_PATH=$HOME/local/include:$C_INCLUDE_PATH
 export LIBRARY_PATH=$HOME/local/lib:$LIBRARY_PATH
 export LDFLAGS="-L$HOME/local/lib"
 export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH
-export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig:$PKG_CONFIG_PATH
+#export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig
 
 case $OSTYPE in
     linux*)
@@ -68,14 +68,12 @@ alias ls="ls -G"
 alias ll="ls -l"
 alias la="ls -a"
 
+#rm alias
+alias rm="trash"
 
 #Ruby
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
-source ~/.rbenv/completions/rbenv.zsh
-
-
-
 
 
 
@@ -101,7 +99,6 @@ export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
 
 # mosh
 compdef mosh=ssh
-
 
 #git
 export GIT_PAGER="lv -c"
