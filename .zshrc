@@ -30,7 +30,7 @@ setopt share_history
 export LANG=ja_JP.UTF-8
 export EDITOR="vim"
 
-#export PATH=$HOME/bin:$HOME/local/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$HOME/local/bin:/usr/local/bin:$PATH
 export CPLUS_INCLUDE_PATH=$HOME/local/include:$CPLUS_INCLUDE_PATH
 export C_INCLUDE_PATH=$HOME/local/include:$C_INCLUDE_PATH
 export LIBRARY_PATH=$HOME/local/lib:$LIBRARY_PATH
@@ -47,8 +47,9 @@ case $OSTYPE in
        #emacs
         alias emacs=/usr/local/Cellar/emacs/24.2/Emacs.app/Contents/MacOS/Emacs -nw
         #Perl
-        #Perlbrew http://www.perl-entrance.org/p/modernperl20123.html
-        source ~/perl5/perlbrew/etc/bashrc
+        # https://github.com/tokuhirom/plenv
+        if which plenv > /dev/null; then eval "$(plenv init -)"; fi
+
         
         #TeX
         #Ghostscript:http://www.muskmelon.jp/?page_id=75
