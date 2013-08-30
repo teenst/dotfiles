@@ -109,3 +109,5 @@ export GIT_PAGER="lv -c"
 ## http://yuroyoro.hatenablog.com/entry/20110121/1295610398
 export SCALA_HOME=~/.svm/current/rt
 export PATH=$SCALA_HOME/bin:$PATH
+
+
