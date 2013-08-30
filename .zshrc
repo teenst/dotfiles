@@ -46,9 +46,6 @@ case $OSTYPE in
         export DYLD_LIBRARY_PATH=$HOME/local/lib:$DYLD_LIBRARY_PATH
        #emacs
         alias emacs=/usr/local/Cellar/emacs/24.2/Emacs.app/Contents/MacOS/Emacs -nw
-        #Perl
-        # https://github.com/tokuhirom/plenv
-        if which plenv > /dev/null; then eval "$(plenv init -)"; fi
 
         
         #TeX
@@ -76,6 +73,9 @@ alias rm="trash"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
+#Perl
+# https://github.com/tokuhirom/plenv
+if which plenv > /dev/null; then eval "$(plenv init -)"; fi
 
 
 # zsh-completionsを利用する Github => zsh-completions
