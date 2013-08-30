@@ -42,7 +42,7 @@ case $OSTYPE in
     linux*)
         #plenv
         export PATH="$HOME/.plenv/bin:$PATH"
-        
+        ;;
     darwin*)
         export DYLD_LIBRARY_PATH=$HOME/local/lib:$DYLD_LIBRARY_PATH
        #emacs
