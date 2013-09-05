@@ -45,8 +45,11 @@ case $OSTYPE in
         ;;
     darwin*)
         export DYLD_LIBRARY_PATH=$HOME/local/lib:$DYLD_LIBRARY_PATH
-       #emacs
+        
+        #emacs
         alias emacs=/usr/local/Cellar/emacs/24.2/Emacs.app/Contents/MacOS/Emacs -nw
+        #rm alias
+        alias rm="trash"
 
         
         #TeX
@@ -67,8 +70,6 @@ alias ls="ls -G"
 alias ll="ls -l"
 alias la="ls -a"
 
-#rm alias
-alias rm="trash"
 
 #Ruby
 export PATH="$HOME/.rbenv/bin:$PATH"
