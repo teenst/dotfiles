@@ -6,7 +6,7 @@
 	token = ! "ruby -rpit -e \"print Pit.get('github')['token']\""
 [core]
         editor = vim
-	excludesfile = /Users/teenst/.gitignore_global
+
 [color]
         ui = true
         diff = auto
@@ -29,13 +29,5 @@
         pl = !git pull && git submodule update --init
 [push]
         default = current
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-[credential]
-	helper = osxkeychain
-[gui]
-	recentrepo = /Users/teenst/github/Lingua
+[include]
+        path = .gitconfig.os
