@@ -44,8 +44,15 @@ case $OSTYPE in
         export PATH="$HOME/.plenv/bin:$PATH"
         ;;
     darwin*)
-        export DYLD_LIBRARY_PATH=$HOME/local/lib:/usr/local/lib
         
+        if [ -n "$DYLD_FALLBACK_LIBRARY_PATH" ]; then
+            DYLD_FALLBACK_LIBRARY_PATH=$DYLD_FALLBACK_LIBRARY_PATH:$HOME/local/lib
+        else
+            DYLD_FALLBACK_LIBRARY_PATH=$HOME/local/lib
+        fi
+        export DYLD_LIBRARY_PATH        
+
+
         #emacs
         alias emacs=/usr/local/Cellar/emacs/24.2/Emacs.app/Contents/MacOS/Emacs -nw
         #rm alias
