@@ -31,12 +31,12 @@ export LANG=ja_JP.UTF-8
 export EDITOR="vim"
 
 export PATH=$HOME/bin:$HOME/local/bin:/usr/local/bin:$PATH
-export CPLUS_INCLUDE_PATH=$HOME/local/include:$CPLUS_INCLUDE_PATH
-export C_INCLUDE_PATH=$HOME/local/include:$C_INCLUDE_PATH
-export LIBRARY_PATH=$HOME/local/lib:$LIBRARY_PATH
+export CPLUS_INCLUDE_PATH=$HOME/local/include
+export C_INCLUDE_PATH=$HOME/local/include
+export LIBRARY_PATH=$HOME/local/lib
 export LDFLAGS="-L$HOME/local/lib"
-export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH
-#export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig
+export LD_LIBRARY_PATH=$HOME/local/lib:/usr/local/lib
+export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig
 
 case $OSTYPE in
     linux*)
@@ -44,7 +44,7 @@ case $OSTYPE in
         export PATH="$HOME/.plenv/bin:$PATH"
         ;;
     darwin*)
-        export DYLD_LIBRARY_PATH=$HOME/local/lib:$DYLD_LIBRARY_PATH
+        export DYLD_LIBRARY_PATH=$HOME/local/lib:/usr/local/lib
         
         #emacs
         alias emacs=/usr/local/Cellar/emacs/24.2/Emacs.app/Contents/MacOS/Emacs -nw
