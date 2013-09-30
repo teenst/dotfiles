@@ -42,6 +42,11 @@ case $OSTYPE in
     linux*)
         #plenv
         export PATH="$HOME/.plenv/bin:$PATH"
+
+        # zsh-completions via github
+        # https://github.com/zsh-users/zsh-completions
+        fpath=(~/github/zsh-completions /usr/local/share/zsh/functions $fpath)
+
         ;;
     darwin*)
         
@@ -64,6 +69,9 @@ case $OSTYPE in
         export PATH=/Applications/Ghostscript.app:/Applications/Ghostscript.app/bin:/usr/texbin:$PATH
         export MANPATH=/Library/TeX/Distributions/.DefaultTeX/Contents/Man:$MANPATH
 
+        #zsh-completions via homebrew
+        fpath=(/usr/local/share/zsh-completions $fpath)
+
 esac
 
 
@@ -77,6 +85,10 @@ alias ls="ls -G"
 alias ll="ls -l"
 alias la="ls -a"
 
+#diff coler
+alias diff='colordiff'
+alias less='less -R'
+
 
 #Ruby
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -87,9 +99,6 @@ eval "$(rbenv init -)"
 if which plenv > /dev/null; then eval "$(plenv init -)"; fi
 
 
-# zsh-completionsを利用する Github => zsh-completions
-# https://github.com/zsh-users/zsh-completions
-fpath=(~/github/zsh-completions /usr/local/share/zsh/functions $fpath)
 
 # git u command
 function u()
