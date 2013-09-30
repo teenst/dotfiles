@@ -22,3 +22,4 @@ Thumbs.db
 .Trashes
 /.emacs.d/abbrev_defs
 /.emacs.d/ac-comphist.dat
+.gitconfig.os
