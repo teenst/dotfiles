@@ -4,6 +4,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes (quote ("1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" default)))
  '(inhibit-startup-screen t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -19,8 +20,8 @@
         (add-to-list 'load-path default-directory)
         (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
             (normal-top-level-add-subdirs-to-load-path))))))
-;; elispとconfディレクトリをサブディレクトリごとload-pathに通す
-(add-to-load-path "elisp" "conf" "public_repos" "site-lisp")
+;; elispディレクトリをサブディレクトリごとload-pathに通す
+(add-to-load-path "elisp" "site-lisp")
 
 ;; package.el use melpa
 (setq url-http-attempt-keepalives nil)
@@ -32,7 +33,7 @@
                '("ELPA" . "http://tromey.com/elpa/"))
   (package-initialize))
 ; melpa.el
-;(require 'melpa)
+(require 'melpa)
 
 ;; auto-install
 (when (require 'auto-install nil t)
@@ -125,53 +126,24 @@
 (set-face-foreground 'whitespace-tab "LightSlateGray")
 (set-face-background 'whitespace-tab "DarkSlateGray")
 
-;; anything
-;; (auto-install-batch "anything")
-(when (require 'anything nil t)
-  (setq
-   ;; 候補を表示するまでの時間。デフォルトは0.5
-   anything-idle-delay 0.3
-   ;; タイプして再描写するまでの時間。デフォルトは0.1
-   anything-input-idle-delay 0.2
-   ;; 候補の最大表示数。デフォルトは50
-   anything-candidate-number-limit 100
-   ;; 候補が多いときに体感速度を早くする
-   anything-quick-update t
-   ;; 候補選択ショートカットをアルファベットに
-   anything-enable-shortcuts 'alphabet)
-
-  (when (require 'anything-config nil t)
-    ;; root権限でアクションを実行するときのコマンド
-    ;; デフォルトは"su"
-    (setq anything-su-or-sudo "sudo"))
-
-  (require 'anything-match-plugin nil t)
-
-  ;; (when (and (executable-find "cmigemo")
-  ;;            (require 'migemo nil t))
-  ;;   (require 'anything-migemo nil t))
-
-  (when (require 'anything-complete nil t)
-    ;; lispシンボルの補完候補の再検索時間
-    (anything-lisp-complete-symbol-set-timer 150))
-
-  (require 'anything-show-completion nil t)
-
-  (when (require 'auto-install nil t)
-    (require 'anything-auto-install nil t))
-
-  (when (require 'descbinds-anything nil t)
-    ;; describe-bindingsをAnythingに置き換える
-    (descbinds-anything-install)))
 
 ;; auto-complete
 ;; M-x package-install RET auto-complete
-(when (require 'auto-complete-config nil t)
-  (add-to-list 'ac-dictionary-directories 
-    "~/.emacs.d/elpa/auto-complete-20120327/dict/")
-  (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
-  (ac-config-default)
-  (setq ac-use-menu-map t))
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories 
+             "~/.emacs.d/elpa/auto-complete-20130724.1750/dict/")
+(ac-config-default)
+;; (setq ac-auto-start nil)
+;; (ac-set-trigger-key "TAB")
+(setq ac-use-menu-map t)
+(define-key ac-menu-map "\C-n" 'ac-next)
+(define-key ac-menu-map "\C-p" 'ac-previous)
+
+
+;; Helm-mode
+(global-set-key (kbd "C-c h") 'helm-mini)
+(helm-mode 1)
+;(define-key ac-complete-mode-map (kbd "C-:") 'ac-complete-with-helm)
 
 ;; color-theme
 (load-theme 'solarized-dark t)
@@ -185,7 +157,7 @@
 (add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
 
-;; ;; ruby-block
+;; ruby-block
 (require 'ruby-block)
 (setq ruby-block-highlight-toggle t)
 (defun ruby-mode-hook-ruby-block()
@@ -224,7 +196,6 @@
 ;;Rsense
 ;;read http://cx4a.org/software/rsense/manual.ja.html
 (setq rsense-home "/Users/teenst/.emacs.d/opt/rsense-0.3")
-(add-to-list 'load-path (concat rsense-home "/etc"))
 (require 'rsense)
 
 (add-hook 'ruby-mode-hook
@@ -234,9 +205,10 @@
              (add-to-list 'ac-sources 'ac-source-rsense-constant)
              ;; C-x .で補完出来るようキーを設定
              (define-key ruby-mode-map (kbd "C-x .") 'ac-complete-rsense)))
+
 ;;Rsense hook Reference
-(setq rsense-rurema-home (concat rsense-home "/doc/ruby-refm-1.9.3-dynamic-snapshot"))
-(setq rsense-rurema-refe "refe-1_9_3")
+;(setq rsense-rurema-home (concat rsense-home "/doc/ruby-refm-1.9.3-dynamic-snapshot"))
+;(setq rsense-rurema-refe "refe-1_9_3")
 
 ;; Ruby indent
 ;; http://willnet.in/13
@@ -280,8 +252,6 @@
   (setq flymake-python-syntax-checker "flake8"))
 (load-library "flymake-cursor")
 
-;; Magit
-(require 'magit)
 
 ;; YaTeX mode
 (setq auto-mode-alist
@@ -298,4 +268,3 @@
 ;;markdown-mode
 (setq auto-mode-alist 
       (cons '("\\.md" . markdown-mode) auto-mode-alist))
-
