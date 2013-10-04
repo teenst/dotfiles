@@ -59,7 +59,7 @@ case $OSTYPE in
 
 
         #emacs
-        alias emacs=/usr/local/Cellar/emacs/24.2/Emacs.app/Contents/MacOS/Emacs -nw
+        alias emacs=/usr/local/Cellar/emacs/24.3/Emacs.app/Contents/MacOS/Emacs -nw
         #rm alias
         alias rm="trash"
 
