@@ -1,0 +1,6 @@
+[submodule "sbt-install"]
+	path = sbt-install
+	url = git@github.com:tototoshi/sbt-install.git
+[submodule "svm"]
+	path = svm
+	url = git@github.com:yuroyoro/svm.git
