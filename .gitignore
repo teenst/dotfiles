@@ -11,6 +11,9 @@ auto-save-list
 tramp
 .\#*
 
+/.emacs.d/abbrev_defs
+/.emacs.d/ac-comphist.dat
+
 .emacs.d/opt/
 .emacs.d/elpa/
 .emacs.d/site-lisp/
@@ -20,6 +23,12 @@ tramp
 Thumbs.db
 .Spotlight-V100
 .Trashes
-/.emacs.d/abbrev_defs
-/.emacs.d/ac-comphist.dat
+
+
 .gitconfig.os
+
+#IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
