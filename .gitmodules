@@ -4,3 +4,6 @@
 [submodule "svm"]
 	path = svm
 	url = git@github.com:yuroyoro/svm.git
+[submodule "pure"]
+	path = pure
+	url = git@github.com:sindresorhus/pure.git

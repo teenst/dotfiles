@@ -38,6 +38,11 @@ export LDFLAGS="-L$HOME/local/lib"
 export LD_LIBRARY_PATH=$HOME/local/lib:/usr/local/lib
 export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig
 
+## prompt
+# ln -s "$HOME/.dotfiles/pure/pure.zsh" /usr/local/share/zsh/site-functions/prompt_pure_setup
+autoload -U promptinit && promptinit
+prompt pure
+
 case $OSTYPE in
     linux*)
         #plenv
