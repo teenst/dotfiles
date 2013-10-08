@@ -43,6 +43,10 @@ case $OSTYPE in
         #plenv
         export PATH="$HOME/.plenv/bin:$PATH"
 
+        #pyenv
+        export PYENV_ROOT="$HOME/.pyenv"
+        export PATH="$PYENV_ROOT/bin:$PATH"
+
         # zsh-completions via github
         # https://github.com/zsh-users/zsh-completions
         fpath=(~/github/zsh-completions /usr/local/share/zsh/functions $fpath)
