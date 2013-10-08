@@ -39,7 +39,8 @@ export LD_LIBRARY_PATH=$HOME/local/lib:/usr/local/lib
 export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig
 
 ## prompt
-# ln -s "$HOME/.dotfiles/pure/pure.zsh" /usr/local/share/zsh/site-functions/prompt_pure_setup
+# ln -s ../pure/pure.zsh prompt_pure_setup
+fpath=(~/.dotfiles/zsh.d $fpath)
 autoload -U promptinit && promptinit
 prompt pure
 
