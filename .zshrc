@@ -73,7 +73,10 @@ case $OSTYPE in
         #rm alias
         alias rm="trash"
 
-        
+        # z command
+        _Z_CMD=j
+        source $(brew --prefix)/etc/profile.d/z.sh
+
         #TeX
         #Ghostscript:http://www.muskmelon.jp/?page_id=75
         export PATH=/Applications/Ghostscript.app:/Applications/Ghostscript.app/bin:/usr/texbin:$PATH
@@ -120,6 +123,7 @@ function u()
         cd $1
     fi
 }
+
 
 #gxp
 export PS1="`gxpc prompt 2> /dev/null`\$ "
