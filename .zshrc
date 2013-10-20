@@ -144,7 +144,7 @@ export PATH=$SCALA_HOME/bin:$PATH
 
 # added by travis gem
 source /Users/teenst/.travis/travis.sh
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 
 
 ## screen tab information
@@ -156,5 +156,18 @@ preexec() {
 precmd() {
     echo -ne "\ek$(hostname|awk 'BEGIN{FS="."}{print $1}'):idle\e\\"
 }
+
+
+# zsh syntax highlight
+case $OSTYPE in
+    linux*)
+        source $HOME/github/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+        
+        ;;
+    darwin*)
+        source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+esac
+
+
 
 
