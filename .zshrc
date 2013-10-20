@@ -113,7 +113,7 @@ if which plenv > /dev/null; then eval "$(plenv init -)"; fi
 
 #Python
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-
+export PYTHONPATH=/usr/local/lib/python2.7/site-packages/
 
 # git u command
 function u()
