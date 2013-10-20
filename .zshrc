@@ -142,3 +142,19 @@ export SCALA_HOME=~/.svm/current/rt
 export PATH=$SCALA_HOME/bin:$PATH
 
 
+# added by travis gem
+source /Users/teenst/.travis/travis.sh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
+## screen tab information
+preexec() {
+    mycmd=(${(s: :)${1}})
+    echo -ne "\ek$(hostname|awk 'BEGIN{FS="."}{print $1}'):$mycmd[1]\e\\"
+}
+
+precmd() {
+    echo -ne "\ek$(hostname|awk 'BEGIN{FS="."}{print $1}'):idle\e\\"
+}
+
+
