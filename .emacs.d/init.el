@@ -51,6 +51,9 @@
 ;; カラム番号表示
 (column-number-mode t)
 
+;; ラインにハイライト
+(global-hl-line-mode t)
+
 ;; タイトルバーにフルパスを表示
 (setq frame-title-format "%f")
 
