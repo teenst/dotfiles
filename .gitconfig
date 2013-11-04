@@ -6,6 +6,7 @@
 	token = ! "ruby -rpit -e \"print Pit.get('github')['token']\""
 [core]
         editor = vim
+        excludesfile = /opt/boxen/config/git/gitignore
 
 [color]
         ui = true
@@ -31,3 +32,9 @@
         default = current
 [include]
         path = .gitconfig.os
+
+[credential]
+helper = /opt/boxen/bin/boxen-git-credential
+
+[hub]
+protocol = https

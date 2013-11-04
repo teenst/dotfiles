@@ -40,7 +40,7 @@ export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig
 
 ## prompt
 # ln -s ../pure/pure.zsh prompt_pure_setup
-fpath=(~/.dotfiles/zsh.d $fpath)
+fpath=(~/gitrepos/dotfiles/zsh.d $fpath)
 autoload -U promptinit && promptinit
 prompt pure
 
@@ -69,13 +69,11 @@ case $OSTYPE in
 
 
         #emacs
-        alias emacs=/usr/local/Cellar/emacs/24.3/Emacs.app/Contents/MacOS/Emacs -nw
-        #rm alias
-        alias rm="trash"
+        alias emacs=/opt/boxen/homebrew/Cellar/emacs/24.3/Emacs.app/Contents/MacOS/Emacs -nw
 
         # z command
         _Z_CMD=j
-        source $(brew --prefix)/etc/profile.d/z.sh
+        source /opt/boxen/homebrew/etc/profile.d/z.sh
 
         #TeX
         #Ghostscript:http://www.muskmelon.jp/?page_id=75
@@ -83,8 +81,11 @@ case $OSTYPE in
         export MANPATH=/Library/TeX/Distributions/.DefaultTeX/Contents/Man:$MANPATH
 
         #zsh-completions via homebrew
-        fpath=(/usr/local/share/zsh-completions $fpath)
+        fpath=(/opt/boxen/homebrew/share/zsh-completions $fpath)
 
+        #boxen
+        [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
+        [ -f /opt/boxen/nvm/nvm.sh ] && source /opt/boxen/nvm/nvm.sh
 esac
 
 
@@ -154,7 +155,7 @@ case $OSTYPE in
         
         ;;
     darwin*)
-        source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+        source /opt/boxen/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 esac
 
 
