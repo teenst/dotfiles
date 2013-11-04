@@ -132,11 +132,6 @@ export SCALA_HOME=~/.svm/current/rt
 export PATH=$SCALA_HOME/bin:$PATH
 
 
-# added by travis gem
-source /Users/teenst/.travis/travis.sh
-
-
-
 ## screen tab information
 preexec() {
     mycmd=(${(s: :)${1}})
