@@ -1,0 +1,58 @@
+config defaultToCurrentScreen true
+config nudgePercentOf screenSize
+config resizePercentOf screenSize
+
+# alt-{right,left,up,down} でその方向にウィンドウサイズを変化させる
+bind right:alt       resize +10% +0
+bind left:alt        resize -10% +0
+bind up:alt          resize +0   -10%
+bind down:alt        resize +0   +10%
+
+# 右下の位置を固定してウィンドウサイズを変化させる
+bind right:ctrl;alt  resize -10% +0 bottom-right
+bind left:ctrl;alt   resize +10% +0 bottom-right
+bind up:ctrl;alt     resize +0   +10% bottom-right
+bind down:ctrl;alt   resize +0   -10% bottom-right
+
+# ctrl-alt-shift-{right, left} を押すたびにウィンドウサイズと位置を切り替える
+# chain action1 | action2 と設定すれば押す度に挙動が変化する
+alias cas ctrl;alt;shift
+alias halfx bar-resize:screenSizeX/2
+alias halfy bar-resize:screenSizeY/2
+alias quad resize:screenSizeX/2;screenSizeY/2
+bind right:${cas}  chain push right ${halfx} | corner top-right ${quad} | corner bottom-right ${quad}
+bind left:${cas}   chain push left ${halfx} | corner top-left ${quad} | corner bottom-left ${quad}
+bind down:${cas}   chain push bottom ${halfy} | push up ${halfy}
+
+# 全画面化
+bind up:${cas}  corner top-left resize:screenSizeX;screenSizeY
+
+# ウィンドウを移動
+bind right:shift;alt nudge +5% +0
+bind left:shift;alt  nudge -5% +0
+bind up:shift;alt    nudge +0   -10%
+bind down:shift;alt  nudge +0   +10%
+
+# undo
+bind `:alt undo
+
+# focus
+alias chrome 'Google Chrome'
+alias iterm 'iTerm'
+alias emacs 'Emacs'
+alias skype 'Skype'
+alias things 'Things'
+bind 1:alt focus ${chrome}
+bind 2:alt focus ${emacs}
+bind 3:alt focus ${iterm}
+bind 4:alt focus ${skype}
+bind 5:alt focus ${things}
+
+# iTerm, Emacs, Google Chrome をぐるぐるする
+layout jobLayout1 ${iterm} push right ${halfx}
+layout jobLayout1 ${emacs} push left ${halfx}
+layout jobLayout2 ${iterm} push left ${halfx}
+layout jobLayout2 ${chrome} push right ${halfx}
+layout jobLayout3 ${chrome} push left ${halfx}
+layout jobLayout3 ${emacs} push right ${halfx}
+bind 1:ctrl;alt	  chain sequence layout jobLayout1 > focus ${iterm} > focus ${emacs} | sequence layout jobLayout2 > focus ${iterm} > focus ${chrome} | sequence layout jobLayout3 > focus ${emacs} > focus ${chrome}
