@@ -53,6 +53,7 @@ case $OSTYPE in
         export PYENV_ROOT="$HOME/.pyenv"
         export PATH="$PYENV_ROOT/bin:$PATH"
 
+
         # zsh-completions via github
         # https://github.com/zsh-users/zsh-completions
         fpath=(~/github/zsh-completions /usr/local/share/zsh/functions $fpath)
@@ -103,6 +104,8 @@ alias la="ls -a"
 alias diff='colordiff'
 alias less='less -R'
 
+#rm
+alias rm='trash'
 
 
 # git u command
@@ -141,6 +144,9 @@ preexec() {
 precmd() {
     echo -ne "\ek$(hostname|awk 'BEGIN{FS="."}{print $1}'):idle\e\\"
 }
+
+# Fasd
+eval "$(fasd --init posix-alias zsh-hook)"
 
 
 # zsh syntax highlight
