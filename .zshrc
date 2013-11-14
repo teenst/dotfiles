@@ -71,7 +71,10 @@ case $OSTYPE in
 
         #emacs
         alias emacs=/opt/boxen/homebrew/Cellar/emacs/24.3/Emacs.app/Contents/MacOS/Emacs -nw
-
+        
+        #byobu
+        export BYOBU_PREFIX=/opt/boxen/homebrew
+        
         # z command
         _Z_CMD=j
         source /opt/boxen/homebrew/etc/profile.d/z.sh
