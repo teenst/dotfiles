@@ -160,6 +160,14 @@
 (add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
 
+;; Ruby-insert-end
+(defun ruby-insert-end ()
+  (interactive)
+  (insert "end")
+  (ruby-indent-line t)
+  (end-of-line))
+
+
 ;; ruby-block
 (require 'ruby-block)
 (setq ruby-block-highlight-toggle t)
