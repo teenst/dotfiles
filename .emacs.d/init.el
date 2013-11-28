@@ -266,10 +266,15 @@
 
 ;; YaTeX mode
 (setq auto-mode-alist
-      (cons (cons "\\.tex$" 'yatex-mode) auto-mode-alist))
+      (append '(("\\.tex$" . yatex-mode)
+                ("\\.ltx$" . yatex-mode)
+                ("\\.cls$" . yatex-mode)
+                ("\\.sty$" . yatex-mode)
+                ("\\.clo$" . yatex-mode)
+                ("\\.bbl$" . yatex-mode)) auto-mode-alist))
 (autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
-(setq tex-command "~/Library/TeXShop/bin/platex2pdf-utf8"
-     dvi2-command "open -a TeXShop")
+(setq tex-command "/usr/texbin/ptex2pdf -l -u -ot '-synctex=1'")
+(setq dvi2-command "/usr/bin/open -a TeXShop")
 (setq YaTeX-kanji-code 4)
 (setq bibtex-command "pbibtex")
 (add-hook 'yatex-mode-hook 'turn-on-reftex)
