@@ -239,6 +239,12 @@
       (indent-line-to indent)
       (when (> offset 0) (forward-char offset)))))
 
+;;ruby-refactor
+(add-hook 'ruby-mode-hook 'ruby-refactor-mode-launch)
+
+;;zossima
+(add-hook 'ruby-mode-hook 'zossima-mode)
+
 
 ;; python
 (defun electric-pair ()
