@@ -279,7 +279,7 @@
                 ("\\.clo$" . yatex-mode)
                 ("\\.bbl$" . yatex-mode)) auto-mode-alist))
 (autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
-(setq tex-command "/usr/texbin/ptex2pdf -l -u -ot '-synctex=1'")
+(setq tex-command "/usr/texbin/ptex2pdf -l -ot '-synctex=1 -file-line-error'")
 (setq dvi2-command "/usr/bin/open -a TeXShop")
 (setq YaTeX-kanji-code 4)
 (setq bibtex-command "pbibtex")
