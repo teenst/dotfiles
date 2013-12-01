@@ -204,23 +204,6 @@
 
 (require 'ruby-tools)
 
-;;Rsense
-;;read http://cx4a.org/software/rsense/manual.ja.html
-(setq rsense-home "/Users/teenst/.emacs.d/opt/rsense-0.3")
-(require 'rsense)
-
-(add-hook 'ruby-mode-hook
-          '(lambda ()
-             ;; .や::を入力直後から補完開始
-             (add-to-list 'ac-sources 'ac-source-rsense-method)
-             (add-to-list 'ac-sources 'ac-source-rsense-constant)
-             ;; C-x .で補完出来るようキーを設定
-             (define-key ruby-mode-map (kbd "C-x .") 'ac-complete-rsense)))
-
-;;Rsense hook Reference
-;(setq rsense-rurema-home (concat rsense-home "/doc/ruby-refm-1.9.3-dynamic-snapshot"))
-;(setq rsense-rurema-refe "refe-1_9_3")
-
 ;; Ruby indent
 ;; http://willnet.in/13
 (setq ruby-deep-indent-paren-style nil)
