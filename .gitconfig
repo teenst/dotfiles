@@ -43,3 +43,5 @@
 
 [hub]
 protocol = https
+[difftool "latex"]
+	cmd = latexdiff  \"$LOCAL\" \"$REMOTE\"
