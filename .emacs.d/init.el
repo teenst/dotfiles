@@ -168,10 +168,31 @@
 ;(require 'undo-tree)
 ;(global-undo-tree-mode)
 
+
+;;rbenv
+(setq rbenv-installation-dir "/opt/boxen/rbenv")
+(global-rbenv-mode)
+
 ;; Ruby-mode
 (autoload 'ruby-mode "ruby-mode" "Major mode for ruby files" t)
 (add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
+
+;; rcodetools
+(require 'rcodetools)
+(setq rct-find-tag-if-available nil)
+(defun ruby-mode-hook-rcodetools ()
+  (define-key ruby-mode-map "\C-c\C-c" 'rct-complete-symbol)
+  (define-key ruby-mode-map "\C-c\C-t" 'ruby-toggle-buffer)
+  (define-key ruby-mode-map "\C-c\C-d" 'xmp)
+  (define-key ruby-mode-map "\C-c\C-f" 'rct-ri))
+(add-hook 'ruby-mode-hook 'ruby-mode-hook-rcodetools)
+(add-hook 'ruby-mode-hook
+          (lambda ()
+            (require 'rcodetools)
+            (require 'auto-complete-ruby)
+            (make-local-variable 'ac-omni-completion-sources)
+            (setq ac-omni-completion-sources '(("\\.\\=" . (ac-source-rcodetools))))))
 
 ;; Ruby-insert-end
 (defun ruby-insert-end ()
