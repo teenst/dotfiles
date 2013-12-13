@@ -60,12 +60,21 @@
 ;;menu-bar非表示
 (menu-bar-mode 0)
 
+;;redo+
+(require 'redo+)
+(global-set-key (kbd "C-?") 'redo)
+(setq undo-no-redo t)
+
 ;;関数移動のためのimenu(この割当てはterminal emacsでは不可能)
 (global-set-key (kbd "C-.") 'imenu)
 
 ;;Backupファイルを作らない
 (setq make-backup-files nil)
 
+;;cua-mode
+;;from http://tech.kayac.com/archivmode/emacs-rectangle.html
+(cua-mode t)
+(setq cua-enable-cua-keys nil) ; そのままだと C-x が切り取りになってしまったりするので無効化
 
 ;; 入力されるキーシーケンスを入れ替える
 ;; ?\C-?はDELのキーシーケンス
@@ -227,7 +236,6 @@
 
 ;;zossima
 (add-hook 'ruby-mode-hook 'zossima-mode)
-
 
 ;; python
 (defun electric-pair ()
