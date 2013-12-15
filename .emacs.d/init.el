@@ -26,6 +26,10 @@
 ;; package.el use melpa
 (setq url-http-attempt-keepalives nil)
 
+;; measure same file name
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+
 (when (require 'package nil t)
   (add-to-list 'package-archives
                '("melpa" . "http://melpa.milkbox.net/packages/") t)
