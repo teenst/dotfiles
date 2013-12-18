@@ -310,3 +310,7 @@
 ;;markdown-mode
 (setq auto-mode-alist 
       (cons '("\\.md" . markdown-mode) auto-mode-alist))
+
+(defadvice flymake-post-syntax-check (before flymake-force-check-was-interrupted)
+  (setq flymake-check-was-interrupted t))
+(ad-activate 'flymake-post-syntax-check)
