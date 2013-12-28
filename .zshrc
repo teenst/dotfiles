@@ -46,6 +46,10 @@ prompt pure
 
 case $OSTYPE in
     linux*)
+        #rbenv
+        export PATH="$HOME/.rbenv/bin:$PATH"
+        eval "$(rbenv init -)"
+
         #plenv
         export PATH="$HOME/.plenv/bin:$PATH"
 
