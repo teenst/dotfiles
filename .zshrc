@@ -64,7 +64,16 @@ case $OSTYPE in
 
         ;;
     darwin*)
-        
+        #boxen
+        [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
+        [ -f /opt/boxen/nvm/nvm.sh ] && source /opt/boxen/nvm/nvm.sh
+
+        #zsh-completions via homebrew
+        fpath=(/opt/boxen/homebrew/share/zsh-completions $fpath)
+        fpath=(/opt/boxen/homebrew/share/zsh/site-functions $fpath)
+        fpath=(/opt/boxen/homebrew/share/zsh/functions $fpath)
+        autoload -Uz compinit; compinit -u
+
         if [ -n "$DYLD_FALLBACK_LIBRARY_PATH" ]; then
             DYLD_FALLBACK_LIBRARY_PATH=$DYLD_FALLBACK_LIBRARY_PATH:$HOME/local/lib
         else
@@ -72,12 +81,17 @@ case $OSTYPE in
         fi
         export DYLD_LIBRARY_PATH        
 
+        export CPLUS_INCLUDE_PATH=/opt/boxen/homebrew/include:$CPLUS_INCLUDE_PATH
+        export C_INCLUDE_PATH=/opt/boxen/homebrew/include:$C_INCLUDE_PATH
+        export LIBRARY_PATH=/opt/boxen/homebrew/lib:$LIBRARY_PATH
+        export LDFLAGS="-L$HOME/local/lib"
+        export LD_LIBRARY_PATH=/opt/boxen/homebrew/lib:$LD_LIBRARY_PATH
 
         #emacs
         alias emacs=/opt/boxen/homebrew/Cellar/emacs/24.3/Emacs.app/Contents/MacOS/Emacs -nw
         
         #byobu
-        export BYOBU_PREFIX=/opt/boxen/homebrew
+        export BYOBU_PREFIX=$(brew --prefix)
         
         # z command
         _Z_CMD=j
@@ -88,12 +102,6 @@ case $OSTYPE in
         export PATH=/Applications/Ghostscript.app:/Applications/Ghostscript.app/bin:/usr/texbin:$PATH
         export MANPATH=/Library/TeX/Distributions/.DefaultTeX/Contents/Man:$MANPATH
 
-        #zsh-completions via homebrew
-        fpath=(/opt/boxen/homebrew/share/zsh-completions $fpath)
-
-        #boxen
-        [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
-        [ -f /opt/boxen/nvm/nvm.sh ] && source /opt/boxen/nvm/nvm.sh
 esac
 
 
