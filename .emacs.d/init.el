@@ -12,6 +12,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
 ;;load-pathを追加する関数を定義
 (defun add-to-load-path (&rest paths)
   (let (path)
@@ -23,6 +25,11 @@
 ;; elispディレクトリをサブディレクトリごとload-pathに通す
 (add-to-load-path "elisp" "site-lisp")
 
+;; PATHを追加
+(setenv "PATH" (mapconcat 'identity exec-path ":"))
+
+
+; Emacs package
 ;; package.el use melpa
 (setq url-http-attempt-keepalives nil)
 
@@ -36,7 +43,7 @@
   (add-to-list 'package-archives
                '("ELPA" . "http://tromey.com/elpa/"))
   (package-initialize))
-; melpa.el
+;; melpa.el
 (require 'melpa)
 
 ;; auto-install
@@ -49,8 +56,21 @@
   (auto-install-compatibility-setup))
 
 
-;; "C-t"でウィンドウを切り替える
-(define-key global-map (kbd "C-t") 'other-window)
+; Emacs command & window views
+;; タブ文字と全角スペースの可視化
+(setq whitespace-style
+      '(tabs tab-mark spaces space-mark))
+(setq whitespace-space-regexp "\\(\x3000+\\)")
+(setq whitespace-display-mappings
+      '((space-mark ?\x3000 [?\□])
+        (tab-mark   ?\t   [?\xBB ?\t])
+        ))
+(require 'whitespace)
+(global-whitespace-mode 1)
+(set-face-foreground 'whitespace-space "LightSlateGray")
+(set-face-background 'whitespace-space "DarkSlateGray")
+(set-face-foreground 'whitespace-tab "LightSlateGray")
+(set-face-background 'whitespace-tab "DarkSlateGray")
 
 ;; カラム番号表示
 (column-number-mode t)
@@ -65,21 +85,9 @@
 ;;menu-bar非表示
 (menu-bar-mode 0)
 
-;;redo+
-(require 'redo+)
-(global-set-key (kbd "C-?") 'redo)
-(setq undo-no-redo t)
 
-;;関数移動のためのimenu(この割当てはterminal emacsでは不可能)
-(global-set-key (kbd "C-.") 'imenu)
-
-;;Backupファイルを作らない
-(setq make-backup-files nil)
-
-;;cua-mode
-;;from http://tech.kayac.com/archivmode/emacs-rectangle.html
-(cua-mode t)
-(setq cua-enable-cua-keys nil) ; そのままだと C-x が切り取りになってしまったりするので無効化
+;; "C-t"でウィンドウを切り替える
+(define-key global-map (kbd "C-t") 'other-window)
 
 ;; 入力されるキーシーケンスを入れ替える
 ;; ?\C-?はDELのキーシーケンス
@@ -89,19 +97,12 @@
 ;; emacsキーバインド
 ;(require 'emacs-keybind)
 
-;; PATHを追加
-(setenv "PATH" (mapconcat 'identity exec-path ":"))
-
-
-
-;; paren-mode 対応する括弧を強調して表示
-;(setq show-paren-delay 0) ; 表示秒数
-;(show-paren-mode t)
+;;Backupファイルを作らない
+(setq make-backup-files nil)
 
 ;; インデント
-;(setq perl-indent-level 4)
-;(setq c-indent-level 4)
 (setq-default indent-tabs-mode nil)
+
 
 ;; Mac用の設定
 (when (eq system-type 'darwin)
@@ -126,25 +127,26 @@
   (setq face-font-rescale-alist
         '((".*Menlo.*" . 1.0)
           (".*Hiragino_Maru_Gothic_ProN.*" . 1.2)
-          ("-cdac$" . 1.3))))
+          ("-cdac$" . 1.3)))
 
-;; タブ文字と全角スペースの可視化
-(setq whitespace-style
-      '(tabs tab-mark spaces space-mark))
-(setq whitespace-space-regexp "\\(\x3000+\\)")
-(setq whitespace-display-mappings
-      '((space-mark ?\x3000 [?\□])
-        (tab-mark   ?\t   [?\xBB ?\t])
-        ))
-(require 'whitespace)
-(global-whitespace-mode 1)
-(set-face-foreground 'whitespace-space "LightSlateGray")
-(set-face-background 'whitespace-space "DarkSlateGray")
-(set-face-foreground 'whitespace-tab "LightSlateGray")
-(set-face-background 'whitespace-tab "DarkSlateGray")
+  ;; color-theme
+  (load-theme 'solarized-dark t))
+
+;cua-mode
+;;from http://tech.kayac.com/archivmode/emacs-rectangle.html
+(cua-mode t)
+(setq cua-enable-cua-keys nil) ; そのままだと C-x が切り取りになってしまったりするので無効化
+
+;redo+
+(require 'redo+)
+(global-set-key (kbd "C-?") 'redo)
+(setq undo-no-redo t)
+
+;関数移動のためのimenu(この割当てはterminal emacsでは不可能)
+(global-set-key (kbd "C-.") 'imenu)
 
 
-;; auto-complete
+; auto-complete
 (when (require 'auto-complete-config nil t)
   (add-to-list 'ac-dictionary-directories 
                "~/.emacs.d/elpa/auto-complete-20131128.233/dict/")
@@ -162,6 +164,7 @@
 
 
 ;; Helm-mode
+;; from http://d.hatena.ne.jp/a_bicky/20140104/1388822688
 (global-set-key (kbd "C-c h") 'helm-mini)
 (when (require 'helm-config nil t)
   (helm-mode 1)
@@ -206,16 +209,9 @@
                         (substring input-pattern 1)
                       (concat ".*" input-pattern)))))))
 
-;; color-theme
-;;(load-theme 'solarized-dark t)
-
-;;undo-tree
-;(require 'undo-tree)
-;(global-undo-tree-mode)
-
-
+; Ruby
 ;;rbenv
-(setq rbenv-installation-dir "/home/hayato-n/.rbenv")
+(setq rbenv-installation-dir "~/.rbenv")
 (global-rbenv-mode)
 
 ;; Ruby-mode
@@ -307,7 +303,9 @@
 ;;zossima
 (add-hook 'ruby-mode-hook 'zossima-mode)
 
-;; python
+
+
+; python
 (defun electric-pair ()
   "Insert character pair without sournding spaces"
   (interactive)
@@ -320,6 +318,7 @@
             (define-key python-mode-map "[" 'electric-pair)
             (define-key python-mode-map "{" 'electric-pair)
             (define-key python-mode-map "\C-m" 'newline-and-indent)))
+
 ;;; ac-python
 (require 'ac-python)
 
@@ -331,7 +330,7 @@
 (load-library "flymake-cursor")
 
 
-;; YaTeX mode
+; YaTeX mode
 (setq auto-mode-alist
       (append '(("\\.tex$" . yatex-mode)
                 ("\\.ltx$" . yatex-mode)
@@ -348,7 +347,7 @@
 ;;(add-hook 'yatex-mode-hook'(lambda ()(setq auto-fill-function nil)))
 
 
-;;markdown-mode
+;markdown-mode
 (setq auto-mode-alist 
       (cons '("\\.md" . markdown-mode) auto-mode-alist))
 
