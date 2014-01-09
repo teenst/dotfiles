@@ -40,7 +40,7 @@ export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig
 
 ## prompt
 # ln -s ../pure/pure.zsh prompt_pure_setup
-fpath=(~/gitrepos/dotfiles/zsh.d $fpath)
+fpath=(~/.dotfiles/zsh.d $fpath)
 autoload -U promptinit && promptinit
 prompt pure
 
@@ -52,11 +52,12 @@ case $OSTYPE in
 
         #plenv
         export PATH="$HOME/.plenv/bin:$PATH"
+        eval "$(plenv init -)"
 
         #pyenv
         export PYENV_ROOT="$HOME/.pyenv"
         export PATH="$PYENV_ROOT/bin:$PATH"
-
+        eval "$(pyenv init -)"
 
         # zsh-completions via github
         # https://github.com/zsh-users/zsh-completions
@@ -173,7 +174,3 @@ case $OSTYPE in
     darwin*)
         source /opt/boxen/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 esac
-
-
-
-

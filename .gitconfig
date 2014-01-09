@@ -6,7 +6,7 @@
 	token = ! "ruby -rpit -e \"print Pit.get('github')['token']\""
 [core]
         editor = vim
-        excludesfile = /opt/boxen/config/git/gitignore
+
 
 [color]
         ui = true
@@ -28,20 +28,16 @@
         pus = push
         puh = push
         pl = !git pull && git submodule update --init
-[push]
-        default = current
+
 [include]
         path = .gitconfig.os
-
-[credential]
-        helper = /opt/boxen/bin/boxen-git-credential
 
 [pager]
         log = diff-highlight | less
         show = diff-highlight | less
         diff = diff-highlight | less
 
-[hub]
-protocol = https
 [difftool "latex"]
 	cmd = latexdiff  \"$LOCAL\" \"$REMOTE\"
+[push]
+	default = current

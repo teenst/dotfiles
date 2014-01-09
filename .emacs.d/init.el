@@ -57,6 +57,7 @@
 
 ;; ラインにハイライト
 (global-hl-line-mode t)
+(setq hl-line-face 'underline)
 
 ;; タイトルバーにフルパスを表示
 (setq frame-title-format "%f")
@@ -205,10 +206,8 @@
                         (substring input-pattern 1)
                       (concat ".*" input-pattern)))))))
 
-
-
 ;; color-theme
-(load-theme 'solarized-dark t)
+;;(load-theme 'solarized-dark t)
 
 ;;undo-tree
 ;(require 'undo-tree)
@@ -216,7 +215,7 @@
 
 
 ;;rbenv
-(setq rbenv-installation-dir "/opt/boxen/rbenv")
+(setq rbenv-installation-dir "/home/hayato-n/.rbenv")
 (global-rbenv-mode)
 
 ;; Ruby-mode
