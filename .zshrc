@@ -38,14 +38,14 @@ export LDFLAGS="-L$HOME/local/lib"
 export LD_LIBRARY_PATH=$HOME/local/lib:/usr/local/lib
 export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig
 
-## prompt
-# ln -s ../pure/pure.zsh prompt_pure_setup
-fpath=(~/.dotfiles/zsh.d $fpath)
-autoload -U promptinit && promptinit
-prompt pure
-
 case $OSTYPE in
     linux*)
+        ## prompt
+        # ln -s ../pure/pure.zsh prompt_pure_setup
+        fpath=(~/.dotfiles/zsh.d $fpath)
+        autoload -U promptinit && promptinit
+        prompt pure
+
         #rbenv
         export PATH="$HOME/.rbenv/bin:$PATH"
         eval "$(rbenv init -)"
@@ -65,6 +65,12 @@ case $OSTYPE in
 
         ;;
     darwin*)
+        ## prompt
+        # ln -s ../pure/pure.zsh prompt_pure_setup
+        fpath=(~/gitrepos/dotfiles/zsh.d $fpath)
+        autoload -U promptinit && promptinit
+        prompt pure
+
         #boxen
         [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
         [ -f /opt/boxen/nvm/nvm.sh ] && source /opt/boxen/nvm/nvm.sh
