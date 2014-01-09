@@ -141,8 +141,7 @@ function u()
 
 
 #gxp
-export PS1="`gxpc prompt 2> /dev/null`\$ "
-
+#export PS1="`gxpc prompt 2> /dev/null`\$ "
 
 
 # mosh
