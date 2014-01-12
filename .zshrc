@@ -1,3 +1,16 @@
+#change shell
+case $OSTYPE in
+    linux*)
+        if [ -e $HOME/local/bin/zsh ]; then
+            export SHELL=$HOME/local/bin/zsh
+        else
+            echo "No local zsh"
+        fi
+
+        ;;
+    darwin*)
+        export SHELL=/opt/boxen/homebrew/bin/zsh
+esac
 #First add
 autoload -U compinit
 compinit
