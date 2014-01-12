@@ -192,3 +192,10 @@ case $OSTYPE in
     darwin*)
         source /opt/boxen/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 esac
+
+
+# byobu起動
+if [ $TERM != 'screen-bce' ];then
+    byobu
+fi
+
