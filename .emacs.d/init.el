@@ -304,6 +304,14 @@
 (add-hook 'ruby-mode-hook 'zossima-mode)
 
 
+;; http://d.hatena.ne.jp/kitokitoki/20100802/p1
+(add-hook 'ruby-mode-hook
+  (lambda ()
+    (font-lock-add-keywords nil
+      '(("^[^\n]\\{80\\}\\(.*\\)$" 1 font-lock-warning-face t)))))
+
+
+
 
 ; python
 (defun electric-pair ()
