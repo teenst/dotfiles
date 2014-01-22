@@ -75,6 +75,11 @@ case $OSTYPE in
         # zsh-completions via github
         # https://github.com/zsh-users/zsh-completions
         fpath=(~/github/zsh-completions /usr/local/share/zsh/functions $fpath)
+        
+
+        # hub command
+        eval "$(hub alias -s)"
+        compdef hub=git
 
         ;;
     darwin*)
