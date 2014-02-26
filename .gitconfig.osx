@@ -1,5 +1,7 @@
 [core]
 	excludesfile = /Users/teenst/.gitignore_global
+        excludesfile = /opt/boxen/config/git/gitignore
+
 [credential]
 	helper = osxkeychain
 [difftool "sourcetree"]
@@ -10,3 +12,6 @@
 	trustExitCode = true
 [gui]
 	recentrepo = /Users/teenst/github/Lingua
+
+[credential]
+helper = /opt/boxen/bin/boxen-git-credential
