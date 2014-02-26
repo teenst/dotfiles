@@ -6,7 +6,7 @@
 	token = ! "ruby -rpit -e \"print Pit.get('github')['token']\""
 [core]
         editor = vim
-
+	attributesfile = /Users/teenst/.gitattributes
 
 [color]
         ui = true
@@ -17,7 +17,7 @@
 [alias]
         co = checkout
         ci = commit -v
-        st = status
+        st = status --short --branch
         br = branch
         hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
         type = cat-file -t
@@ -28,6 +28,8 @@
         pus = push
         puh = push
         pl = !git pull && git submodule update --init
+        graph = log --graph --decorate --oneline
+
 
 [include]
         path = .gitconfig.os
@@ -41,3 +43,6 @@
 	cmd = latexdiff  \"$LOCAL\" \"$REMOTE\"
 [push]
 	default = current
+
+[hub]
+protocol = https
