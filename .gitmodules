@@ -7,3 +7,6 @@
 [submodule "pure"]
 	path = pure
 	url = git@github.com:sindresorhus/pure.git
+[submodule "zsh.d/zsh-notify"]
+	path = zsh.d/zsh-notify
+	url = git@github.com:marzocchi/zsh-notify.git

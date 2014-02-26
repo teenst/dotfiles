@@ -81,6 +81,9 @@ case $OSTYPE in
         eval "$(hub alias -s)"
         compdef hub=git
 
+        source ~/gitrepos/dotfiles/zsh.d/zsh-notify/notify.plugin.zsh
+        export SYS_NOTIFIER="/opt/boxen/homebrew/bin/terminal-notifier"
+
         ;;
     darwin*)
         ## prompt
