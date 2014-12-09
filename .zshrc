@@ -9,8 +9,9 @@ case $OSTYPE in
 
         ;;
     darwin*)
-        export SHELL=/opt/boxen/homebrew/bin/zsh
+        export SHELL=/usr/local/bin/zsh
 esac
+
 #First add
 autoload -U compinit
 compinit
@@ -47,7 +48,7 @@ export PATH=$HOME/bin:$HOME/local/bin:/usr/local/bin:$PATH
 export CPLUS_INCLUDE_PATH=$HOME/local/include
 export C_INCLUDE_PATH=$HOME/local/include
 export LIBRARY_PATH=$HOME/local/lib
-export LDFLAGS="-L$HOME/local/lib"
+#export LDFLAGS="-L$HOME/local/lib"
 export LD_LIBRARY_PATH=$HOME/local/lib:/usr/local/lib
 export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig
 
@@ -59,18 +60,9 @@ case $OSTYPE in
         autoload -U promptinit && promptinit
         prompt pure
 
-        #rbenv
-        export PATH="$HOME/.rbenv/bin:$PATH"
-        eval "$(rbenv init -)"
-
-        #plenv
-        export PATH="$HOME/.plenv/bin:$PATH"
-        eval "$(plenv init -)"
-
-        #pyenv
-        export PYENV_ROOT="$HOME/.pyenv"
-        export PATH="$PYENV_ROOT/bin:$PATH"
-        eval "$(pyenv init -)"
+	## anyenv
+	export PATH="$HOME/.anyenv/bin:$PATH"
+	eval "$(anyenv init -)"
 
         # zsh-completions via github
         # https://github.com/zsh-users/zsh-completions
@@ -81,9 +73,6 @@ case $OSTYPE in
         eval "$(hub alias -s)"
         compdef hub=git
 
-        source ~/gitrepos/dotfiles/zsh.d/zsh-notify/notify.plugin.zsh
-        export SYS_NOTIFIER="/opt/boxen/homebrew/bin/terminal-notifier"
-
         ;;
     darwin*)
         ## prompt
@@ -92,14 +81,14 @@ case $OSTYPE in
         autoload -U promptinit && promptinit
         prompt pure
 
-        #boxen
-        [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
-        [ -f /opt/boxen/nvm/nvm.sh ] && source /opt/boxen/nvm/nvm.sh
+	## anyenv
+	export PATH="$HOME/.anyenv/bin:$PATH"
+	eval "$(anyenv init -)"
 
-        #zsh-completions via homebrew
-        fpath=(/opt/boxen/homebrew/share/zsh-completions $fpath)
-        fpath=(/opt/boxen/homebrew/share/zsh/site-functions $fpath)
-        fpath=(/opt/boxen/homebrew/share/zsh/functions $fpath)
+	#zsh-completions via homebrew
+        fpath=(/usr/local/share/zsh-completions $fpath)
+        fpath=(/usr/local/share/zsh/site-functions $fpath)
+        fpath=(/usr/local/share/zsh/functions $fpath)
         autoload -Uz compinit; compinit -u
 
         if [ -n "$DYLD_FALLBACK_LIBRARY_PATH" ]; then
@@ -109,21 +98,21 @@ case $OSTYPE in
         fi
         export DYLD_LIBRARY_PATH        
 
-        export CPLUS_INCLUDE_PATH=/opt/boxen/homebrew/include:$CPLUS_INCLUDE_PATH
-        export C_INCLUDE_PATH=/opt/boxen/homebrew/include:$C_INCLUDE_PATH
-        export LIBRARY_PATH=/opt/boxen/homebrew/lib:$LIBRARY_PATH
-        export LDFLAGS="-L$HOME/local/lib"
-        export LD_LIBRARY_PATH=/opt/boxen/homebrew/lib:$LD_LIBRARY_PATH
+        #export CPLUS_INCLUDE_PATH=/opt/boxen/homebrew/include:$CPLUS_INCLUDE_PATH
+        #export C_INCLUDE_PATH=/opt/boxen/homebrew/include:$C_INCLUDE_PATH
+        #export LIBRARY_PATH=/opt/boxen/homebrew/lib:$LIBRARY_PATH
+        #export LDFLAGS="-L$HOME/local/lib ${LDFLAGS}"
+        #export LD_LIBRARY_PATH=/opt/boxen/homebrew/lib:$LD_LIBRARY_PATH
 
         #emacs
-        alias emacs=/opt/boxen/homebrew/Cellar/emacs/24.3/Emacs.app/Contents/MacOS/Emacs -nw
+        alias emacs=/Applications/Emacs.app/Contents/MacOS/Emacs -nw
         
         #byobu
-        export BYOBU_PREFIX=$(brew --prefix)
+        #export BYOBU_PREFIX=$(brew --prefix)
         
-        # z command
-        _Z_CMD=j
-        source /opt/boxen/homebrew/etc/profile.d/z.sh
+       #z command
+        _Z_CMD=j 
+	
 
         #TeX
         #Ghostscript:http://www.muskmelon.jp/?page_id=75
@@ -195,15 +184,9 @@ eval "$(fasd --init posix-alias zsh-hook)"
 case $OSTYPE in
     linux*)
         source $HOME/github/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-        
         ;;
     darwin*)
-        source /opt/boxen/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+        source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	
 esac
-
-
-# byobu起動
-if [ $TERM != 'screen-bce' ];then
-    byobu
-fi
 

@@ -44,7 +44,7 @@
                '("ELPA" . "http://tromey.com/elpa/"))
   (package-initialize))
 ;; melpa.el
-(require 'melpa)
+;(require 'melpa)
 
 ;; auto-install
 (when (require 'auto-install nil t)
