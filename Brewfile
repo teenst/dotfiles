@@ -1,11 +1,9 @@
-# Tap repositories and their packages
-tap 'caskroom/cask'
-install 'brew-cask'
 
-tap rcmdnk/file
-install brew-file
+# tap repositories and their packages
 
-
+## caskroom/cask
+tap caskroom/cask
+install brew-cask
 cask install appcleaner
 cask install arduino
 cask install atom
@@ -25,7 +23,6 @@ cask install intellij-idea
 cask install istat-menus
 cask install iterm2
 cask install java
-cask install java7
 cask install karabiner
 cask install kindle-previewer
 cask install kindlegen
@@ -37,3 +34,71 @@ cask install mplayerx
 cask install music-manager
 cask install skype
 
+## caskroom/versions
+tap caskroom/versions
+cask install java7
+
+## homebrew/dupes
+tap homebrew/dupes
+install zlib
+
+## rcmdnk/file
+tap rcmdnk/file
+install brew-file
+
+# Other Homebrew packages
+install autoconf
+install automake
+install coreutils
+install cscope
+install ctags
+install emacs --japanese --cocoa
+install fasd
+install gdbm
+install gettext
+install git
+install gmp
+install gnu-sed
+install gnutls
+install htop-osx
+install libevent
+install libpng
+install libtasn1
+install libtool
+install libyaml
+install lua
+install luajit
+install lv
+install nettle
+install newt --with-python
+install openssl
+install pcre
+install pkg-config
+install popt
+install readline
+install s-lang
+install tmux
+install trash
+install tree
+install wget
+install xz
+install z
+install zsh
+install zsh-completions
+install zsh-syntax-highlighting
+
+# App Store applications
+appstore Dash
+appstore Day One
+appstore Keynote
+appstore Kobito
+appstore LINE
+appstore Numbers
+appstore Pages
+appstore Pocket
+appstore PopClip
+appstore ReadKit
+appstore Sunrise
+appstore The Unarchiver
+appstore Witch
+appstore Xcode
