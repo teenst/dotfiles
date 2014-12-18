@@ -12,6 +12,7 @@ cask install bettertouchtool
 cask install calibre
 cask install coteditor
 cask install dropbox
+cask install evernote
 cask install firefox
 cask install flash-player
 cask install flux
@@ -33,6 +34,7 @@ cask install microsoft-office
 cask install mplayerx
 cask install music-manager
 cask install skype
+cask install slack
 
 ## caskroom/versions
 tap caskroom/versions
@@ -62,9 +64,13 @@ install gnu-sed
 install gnutls
 install htop-osx
 install libevent
+install libgpg-error
+install libksba
 install libpng
 install libtasn1
 install libtool
+install libxml2
+install libxslt
 install libyaml
 install lua
 install luajit
