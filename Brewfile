@@ -63,6 +63,7 @@ install gmp
 install gnu-sed
 install gnutls
 install htop-osx
+install hub
 install libevent
 install libgpg-error
 install libksba
