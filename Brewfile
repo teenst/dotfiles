@@ -73,7 +73,7 @@ install gnutls
 install go
 install heroku-toolbelt
 install htop-osx
-install hub
+install hub --HEAD
 install libevent
 install libgpg-error
 install libksba
@@ -86,6 +86,7 @@ install libyaml
 install lua
 install luajit
 install lv
+install mercurial
 install nettle
 install newt --with-python
 install openssl
