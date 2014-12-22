@@ -44,6 +44,14 @@ cask install java7
 tap homebrew/dupes
 install zlib
 
+## motemen/ghq
+tap motemen/ghq
+install ghq
+
+## peco/peco
+tap peco/peco
+install peco
+
 ## rcmdnk/file
 tap rcmdnk/file
 install brew-file
