@@ -62,6 +62,8 @@ install git
 install gmp
 install gnu-sed
 install gnutls
+install go
+install heroku-toolbelt
 install htop-osx
 install hub
 install libevent
