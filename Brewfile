@@ -20,6 +20,7 @@ cask install github
 cask install google-chrome
 cask install google-drive
 cask install google-japanese-ime
+cask install gyazo
 cask install intellij-idea
 cask install istat-menus
 cask install iterm2
@@ -27,7 +28,6 @@ cask install java
 cask install karabiner
 cask install kindle-previewer
 cask install kindlegen
-cask install lastfm
 cask install limechat
 cask install mendeley-desktop
 cask install microsoft-office
@@ -35,6 +35,7 @@ cask install mplayerx
 cask install music-manager
 cask install skype
 cask install slack
+cask install slate
 
 ## caskroom/versions
 tap caskroom/versions
@@ -42,6 +43,7 @@ cask install java7
 
 ## homebrew/dupes
 tap homebrew/dupes
+install libiconv
 install zlib
 
 ## motemen/ghq
