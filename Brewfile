@@ -4,6 +4,7 @@
 ## caskroom/cask
 tap caskroom/cask
 install brew-cask
+cask install adobe-reader
 cask install appcleaner
 cask install arduino
 cask install atom
@@ -16,6 +17,7 @@ cask install evernote
 cask install firefox
 cask install flash-player
 cask install flux
+cask install fritzing
 cask install github
 cask install google-chrome
 cask install google-drive
@@ -33,6 +35,7 @@ cask install mendeley-desktop
 cask install microsoft-office
 cask install mplayerx
 cask install music-manager
+cask install postgres
 cask install skype
 cask install slack
 cask install slate
@@ -43,6 +46,7 @@ cask install java7
 
 ## homebrew/dupes
 tap homebrew/dupes
+install grep
 install libiconv
 install zlib
 
@@ -95,8 +99,13 @@ install openssl
 install pcre
 install pkg-config
 install popt
+install qt
 install readline
+install reattach-to-user-namespace
 install s-lang
+install sqlite --with-functions
+install sqlitebrowser
+install terminal-notifier
 install tmux
 install trash
 install tree
