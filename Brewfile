@@ -72,6 +72,7 @@ install emacs --japanese --cocoa
 install fasd
 install gdbm
 install gettext
+install gist
 install git
 install gmp
 install gnu-sed
