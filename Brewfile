@@ -36,6 +36,7 @@ cask install microsoft-office
 cask install mplayerx
 cask install music-manager
 cask install postgres
+cask install silverlight
 cask install skype
 cask install slack
 cask install slate
@@ -81,6 +82,7 @@ install go
 install heroku-toolbelt
 install htop-osx
 install hub --HEAD
+install jrnl
 install libevent
 install libgpg-error
 install libksba
@@ -104,7 +106,7 @@ install qt
 install readline
 install reattach-to-user-namespace
 install s-lang
-install sqlite --with-functions
+install sqlite --with-functions --with-functions
 install sqlitebrowser
 install terminal-notifier
 install tmux
