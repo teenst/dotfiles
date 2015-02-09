@@ -31,6 +31,7 @@ cask install karabiner
 cask install kindle-previewer
 cask install kindlegen
 cask install limechat
+cask install mailbox
 cask install mendeley-desktop
 cask install microsoft-office
 cask install mplayerx
@@ -106,7 +107,7 @@ install qt
 install readline
 install reattach-to-user-namespace
 install s-lang
-install sqlite --with-functions --with-functions
+install sqlite --with-functions
 install sqlitebrowser
 install terminal-notifier
 install tmux
@@ -129,6 +130,7 @@ appstore Numbers
 appstore Pages
 appstore Pocket
 appstore PopClip
+appstore Pushbullet
 appstore ReadKit
 appstore Sunrise
 appstore The Unarchiver
