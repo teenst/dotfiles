@@ -99,7 +99,7 @@ install luajit
 install lv
 install mercurial
 install nettle
-install newt --with-python --with-python
+install newt --with-python
 install openssl
 install pcre
 install pkg-config
