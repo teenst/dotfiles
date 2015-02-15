@@ -37,6 +37,7 @@ cask install microsoft-office
 cask install mplayerx
 cask install music-manager
 cask install postgres
+cask install sdformatter
 cask install silverlight
 cask install skype
 cask install slack
@@ -98,7 +99,7 @@ install luajit
 install lv
 install mercurial
 install nettle
-install newt --with-python
+install newt --with-python --with-python
 install openssl
 install pcre
 install pkg-config
