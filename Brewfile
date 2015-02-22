@@ -29,6 +29,7 @@ cask install iterm2
 cask install java
 cask install karabiner
 cask install kindle-previewer
+cask install kindle
 cask install kindlegen
 cask install limechat
 cask install mailbox
