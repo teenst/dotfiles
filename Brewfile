@@ -108,8 +108,9 @@ install popt
 install qt
 install readline
 install reattach-to-user-namespace
+install redpen
 install s-lang
-install sqlite --with-functions
+install sqlite --with-functions --with-functions
 install sqlitebrowser
 install terminal-notifier
 install tmux
