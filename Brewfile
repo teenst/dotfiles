@@ -43,6 +43,7 @@ cask install silverlight
 cask install skype
 cask install slack
 cask install slate
+cask install virtualbox
 
 ## caskroom/versions
 tap caskroom/versions
@@ -69,9 +70,11 @@ install brew-file
 # Other Homebrew packages
 install autoconf
 install automake
+install boot2docker
 install coreutils
 install cscope
 install ctags
+install docker
 install emacs --japanese --cocoa
 install fasd
 install gdbm
