@@ -16,6 +16,7 @@ cask install dropbox
 cask install evernote
 cask install firefox
 cask install flash-player
+cask install flashlight
 cask install flux
 cask install fritzing
 cask install github
