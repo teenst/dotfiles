@@ -76,7 +76,7 @@ install coreutils
 install cscope
 install ctags
 install docker
-install emacs --japanese --cocoa
+install emacs --japanese --cocoa --with-cocoa
 install fasd
 install gdbm
 install gettext
@@ -114,7 +114,7 @@ install readline
 install reattach-to-user-namespace
 install redpen
 install s-lang
-install sqlite --with-functions --with-functions
+install sqlite --with-functions
 install sqlitebrowser
 install terminal-notifier
 install tmux
