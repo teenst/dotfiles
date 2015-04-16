@@ -76,7 +76,7 @@ install coreutils
 install cscope
 install ctags
 install docker
-install emacs --japanese --cocoa --with-cocoa
+install emacs --with-cocoa
 install fasd
 install gdbm
 install gettext
