@@ -44,7 +44,9 @@ cask install silverlight
 cask install skype
 cask install slack
 cask install slate
+cask install unity-web-player
 cask install virtualbox
+cask install vlc
 
 ## caskroom/versions
 tap caskroom/versions
