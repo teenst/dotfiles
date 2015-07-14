@@ -45,7 +45,6 @@ cask silverlight
 cask skype
 cask slack
 cask slate
-cask unity-web-player
 cask vagrant
 cask virtualbox
 cask vlc
@@ -106,6 +105,7 @@ brew libyaml
 brew lua
 brew luajit
 brew lv
+brew mackup
 brew mercurial
 brew nettle
 brew newt --with-python
