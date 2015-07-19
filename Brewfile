@@ -4,6 +4,7 @@
 ## caskroom/cask
 tap caskroom/cask
 brew brew-cask
+cask adobe-creative-cloud
 cask adobe-reader
 cask appcleaner
 cask arduino
@@ -110,6 +111,8 @@ brew mercurial
 brew nettle
 brew newt --with-python
 brew openssl
+brew packer
+brew pandoc
 brew pcre
 brew pkg-config
 brew popt
