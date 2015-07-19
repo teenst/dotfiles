@@ -11,7 +11,6 @@ cask arduino
 cask atom
 cask bartender
 cask bettertouchtool
-cask calibre
 cask coteditor
 cask dropbox
 cask evernote
