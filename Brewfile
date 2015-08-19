@@ -19,7 +19,6 @@ cask flash-player
 cask flashlight
 cask flux
 cask fritzing
-cask github
 cask google-chrome
 cask google-drive
 cask google-japanese-ime
@@ -132,6 +131,11 @@ brew z
 brew zsh
 brew zsh-completions
 brew zsh-syntax-highlighting
+
+# Below applications were installed by Cask,
+# but do not have corresponding casks.
+
+#cask github (!)
 
 # App Store applications
 appstore Dash
